@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Azaan Sunnati Lebas – সুন্নাহ ভিত্তিক পোশাক, আতর, টুপি এবং আরও অনেক কিছু। অনলাইনে অর্ডার করুন।" />
+<meta name="keywords" content="সুন্নতি পোশাক, আতর, কাসেমী টুপি, জুব্বা, মিসওয়াক, ইসলামিক পোশাক, Azaan Lebas" />
+<meta name="author" content="Azaan Sunnati Lebas" />
+<meta property="og:title" content="Azaan Sunnati Lebas" />
+<meta property="og:description" content="সুন্নাহ মোতাবেক পোশাক ও আতরের কালেকশন – এখন অনলাইনে" />
+<meta property="og:image" content="logo.jpg" />
+<meta property="og:url" content="https://yourwebsite.com" />
+<link rel="preload" as="audio" href="salam.mp3" type="audio/mpeg">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+
+
+  <title>Azaan Sunnati Lebas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="main.js" defer></script>
+
+  <style>
+    .tab-button.active {
+      background-color: #166534;
+      color: white;
+    }
+    .loader {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #16a34a;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 40px auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+
+.chat-buttons a {
+      background: #25d366;
+      color: white;
+      padding: 0.7rem 1rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .chat-buttons a.messenger {
+      background: #0084FF;
+    }
+
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+  <!-- Loading Animation -->
+  <div id="loader" class="loader"></div>
+ <!-- Loader sound -->
+  <audio id="loaderAudio" src="salam.mp3"></audio>
+  <div id="content" class="hidden">
+    <!-- Header -->
+    <header class="bg-green-900 text-white p-4 shadow-md">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-2xl sm:text-2xl md:text-3xl font-bold">Azaan Sunnati Lebas</h1>
+        <nav class="space-x-4">
+          <a href="#" class="hover:text-yellow-300">হোম</a>
+          <a href="#products" class="hover:text-yellow-300">পণ্যসমূহ</a>
+          <a href="#live" class="hover:text-yellow-300">লাইভ</a>
+          <a href="#about" class="hover:text-yellow-300">আমাদের সম্পর্কে</a>
+          <a href="#contact" class="hover:text-yellow-300">যোগাযোগ</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-green-100 py-8 sm:py-10 md:py-12 px-4 text-center">
+      <section class="py-8 sm:py-10 md:py-12 px-4">
+
+      <h2 class="text-3xl font-semibold mb-2">সুন্নাতের মধ্যেই সৌন্দর্য।</h2>
+      <div class="max-w-2xl mx-auto mt-6 text-gray-700 text-base leading-relaxed">
+        <p class="mb-3 font-semibold">সুন্নাহই আমাদের সৌন্দর্যের আসল মাপকাঠি।</p>
+        <p class="mb-2">
+          আমাদের এখানে প্রিমিয়াম মানের আতর, সুরমা, তাসবীহ, মিসওয়াক এবং খাঁটি কাসেমী টুপি উপলব্ধ। পাশাপাশি, বিভিন্ন নকশায় পাঞ্জাবী, পায়জামা, জুব্বা, শেরওয়ানি, কাবলি, ফতুয়া, কটি ও টুপি সহ সকল ধরনের সুন্নাহ পোশাক সর্বোচ্চ যত্ন এবং পারদর্শিতার সঙ্গে তৈরি করা হয়।
+        </p>
+        <p class="mb-2">
+          প্রত্যেকটি পণ্যই খোদার পথে চলার জন্য আপনাকে সাজাতে তৈরি, যাতে আপনার সৌন্দর্যে ছড়ায় আধ্যাত্মিকতা ও শিষ্টাচার।
+        </p>
+        <p class="font-semibold">
+          আপনার খোঁজ এখানেই শেষ—সুন্নাহ মোতাবেক নিখুঁত পোশাকের জন্য আমাদের সাথে থাকুন।
+        </p>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-12 px-4 bg-gray-50">
+      <h2 class="text-2xl font-bold text-center mb-8">🛍️ পণ্যসমূহ</h2>
+      <div class="flex justify-center space-x-2 mb-6">
+        <button onclick="filterProducts('all')" class="tab-button active px-4 py-2 rounded border border-green-700">সব পণ্য</button>
+        <button onclick="filterProducts('panjabi')" class="tab-button px-4 py-2 rounded border border-green-700">সুন্নতি পোশাক</button>
+        <button onclick="filterProducts('attar')" class="tab-button px-4 py-2 rounded border border-green-700">আতর ও পারফিউম</button>
+        <button onclick="filterProducts('tupi')" class="tab-button px-4 py-2 rounded border border-green-700">কাসেমী টুপি</button>
+      </div>
+      <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Panjabi -->
+        <div class="product-item panjabi bg-white rounded shadow p-4">
+          <img src="logo.jpg" alt="সুন্নতি পাঞ্জাবি" class="mb-2 rounded">
+
+          <h3 class="text-xl font-semibold">সুন্নতি পাঞ্জাবি</h3>
+          <p>দাম: ৮৫০৳</p>
+<button onclick="openOrderModal('পণ্যের নাম')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+  অর্ডার করুন
+</button>
+        </div>
+        <div class="product-item panjabi bg-white rounded shadow p-4">
+          <img src="logo.jpg" alt="সাদা সুন্নতি পাঞ্জাবি" class="mb-2 rounded">
+          <h3 class="text-xl font-semibold">সাদা সুন্নতি পাঞ্জাবি</h3>
+          <p>দাম: ৯৫০৳</p>
+<button onclick="openOrderModal('পণ্যের নাম')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+  অর্ডার করুন
+</button>
+        </div>
+        <div class="product-item panjabi bg-white rounded shadow p-4">
+          <img src="logo.jpg" alt="খাকি সুন্নতি পাঞ্জাবি" class="mb-2 rounded">
+          <h3 class="text-xl font-semibold">খাকি সুন্নতি পাঞ্জাবি</h3>
+          <p>দাম: ১০৫০৳</p>
+<button onclick="openOrderModal('পণ্যের নাম')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+  অর্ডার করুন
+</button>
+        </div>
+        <!-- Attar -->
+        <div class="product-item attar bg-white rounded shadow p-4">
+          <img src="logo.jpg" alt="আতর আল ওয়াহিদ" class="mb-2 rounded">
+          <h3 class="text-xl font-semibold">আতর আল ওয়াহিদ</h3>
+          <p>টাইপ: অয়েল বেইজড, ১২ml, দাম: ৩৫০৳</p>
+<button onclick="openOrderModal('পণ্যের নাম')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+  অর্ডার করুন
+</button>
+        </div>
+        <div class="product-item attar bg-white rounded shadow p-4">
+          <img src="logo.jpg" alt="আতর মিসক আল আরব" class="mb-2 rounded">
+          <h3 class="text-xl font-semibold">আতর মিসক আল আরব</h3>
+          <p>১২ml অয়েল বেইজড আতর | দাম: ৩৮০৳</p>
+<button onclick="openOrderModal('পণ্যের নাম')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+  অর্ডার করুন
+</button>
+        </div>
+        <!-- Tupi -->
+        <div class="product-item tupi bg-white rounded shadow p-4">
+          <img src="logo.jpg" alt="কাসেমী টুপি" class="mb-2 rounded">
+          <h3 class="text-xl font-semibold">কাসেমী টুপি</h3>
+          <p>100% কটন, হস্তনির্মিত | দাম: ১৫০৳</p>
+<button onclick="openOrderModal('পণ্যের নাম')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+  অর্ডার করুন
+</button>
+        </div>
+        <div class="product-item tupi bg-white rounded shadow p-4">
+          <img src="logo.jpg" alt="কাসেমী টুপি (কালো)" class="mb-2 rounded">
+          <h3 class="text-xl font-semibold">কাসেমী টুপি (কালো)</h3>
+          <p>হস্তনির্মিত, ১০০% কটন | দাম: ১৬০৳</p>
+<button onclick="openOrderModal('পণ্যের নাম')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+  অর্ডার করুন
+</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Quick View Modal -->
+    <div id="quickViewModal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
+      <div class="bg-white rounded-lg p-6 w-full max-w-md shadow-lg relative">
+        <button onclick="closeQuickView()" class="absolute top-2 right-2 text-gray-500 hover:text-red-600 text-xl">&times;</button>
+        <img id="quickViewImg" src="" alt="" class="mb-4 rounded w-full">
+        <h3 id="quickViewTitle" class="text-xl font-semibold mb-2"></h3>
+        <p id="quickViewDesc" class="mb-2"></p>
+        <button id="quickViewOrderBtn" class="bg-green-700 text-white px-4 py-1 rounded hover:bg-green-800">অর্ডার করুন</button>
+      </div>
+    </div>
+
+    <!-- Order Form Modal -->
+    <div id="orderModal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
+      <div class="bg-white rounded-lg p-6 w-full max-w-md shadow-lg">
+        <h2 class="text-xl font-bold mb-4">📝 অর্ডার ফর্ম</h2>
+        <form id="orderForm" class="space-y-4">
+          <input type="hidden" id="productName" name="product" />
+          <div>
+            <label class="block text-sm font-medium">নাম:</label>
+            <input type="text" class="w-full border px-3 py-2 rounded" required />
+          </div>
+          <div>
+            <label class="block text-sm font-medium">মোবাইল নম্বর:</label>
+            <input type="tel" class="w-full border px-3 py-2 rounded" required />
+          </div>
+          <div>
+            <label class="block text-sm font-medium">ঠিকানা:</label>
+            <textarea class="w-full border px-3 py-2 rounded" required></textarea>
+          </div>
+          <div class="text-right space-x-2">
+            <button type="button" onclick="closeOrderForm()" class="bg-gray-500 text-white px-4 py-1 rounded">বাতিল</button>
+            <button type="submit" class="bg-green-700 text-white px-4 py-1 rounded hover:bg-green-800">পাঠান</button>
+          </div>
+        </form>
+        <div id="orderSuccess" class="hidden text-green-700 mt-4 font-bold text-center">✅ অর্ডার সফলভাবে গ্রহণ করা হয়েছে!</div>
+      </div>
+    </div>
+    <!-- ...Other sections if any... -->
+  </div>
+
+<!-- চ্যাট বাটন -->
+<div class="fixed bottom-4 right-4 flex flex-col gap-3 z-50 chat-buttons">
+  <a href="https://wa.me/8801850105500" target="_blank" class="whatsapp">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 448 512"><path d="M380.9 97.1C339-3.2 233.1-19.6 144.5 27.6 55.9 74.8 18.5 181.1 61.7 269.7l-37.3 108.9 111.5-35.2c89.2 40.3 195.2 1.3 242.5-88.3 38.7-74.7 18.3-160.6-37.5-207.9zm-56.5 199.5c-5.2 14.6-30.2 28.5-40.5 30.3-10.4 1.9-23.3 2.6-67.4-14.3-56.5-22.1-92.9-79.4-95.7-83.1-2.8-3.7-22.8-30.4-22.8-58.1s14.3-41.2 19.4-46.8c5-5.6 11.1-7 14.9-7 3.7 0 7.4 0 10.6.2 3.5.1 8.1-.1 12.2 9.2 4.2 9.2 13.8 32 15.1 34.3 1.2 2.3 2 5.3.4 8.5-1.6 3.2-2.4 5.1-4.7 7.9-2.3 2.7-5.1 6.1-7.3 8.2-2.3 2.2-4.7 4.6-2 9 2.8 4.3 12.5 20.7 26.9 33.5 18.5 16.6 33.9 21.8 38.1 24.2 4.2 2.3 6.6 1.9 9-1.1 2.5-3.1 10.3-12.1 13.1-16.3 2.8-4.2 5.6-3.5 9.2-2.1 3.5 1.4 22.3 10.6 26.1 12.5 3.7 1.9 6.1 2.8 7 4.3.9 1.3.9 7.6-4.3 22.2z"/></svg>
+    WhatsApp
+  </a>
+  <a href="https://m.me/azaansunnatilebas" target="_blank" class="messenger">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 512 512"><path d="M256 32C114.6 32 0 132.3 0 256c0 74.3 38.7 140.5 100.7 183.5v58.4l92.6-50.8c20.7 5.8 42.6 9 65.1 9 141.4 0 256-100.3 256-224S397.4 32 256 32zm40.8 262.3l-52.1-55.8L102.4 294.6l154.7-165.9 53.3 57.5 141.7-41.8-155.1 149.7z"/></svg>
+    Messenger
+  </a>
+</div>
+
+
+<script>
+ window.onload = function () {
+    var audio = document.getElementById("loaderAudio");
+
+    if (!sessionStorage.getItem('loaderShown')) {
+      var playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(function () {
+          document.body.addEventListener('click', function playOnce() {
+            audio.play();
+            document.body.removeEventListener('click', playOnce);
+          });
+        });
+      }
+
+      sessionStorage.setItem('loaderShown', 'true');
+
+      setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("content").classList.remove("hidden");
+      }, 3000); // ৩ সেকেন্ড লোডার দেখাবে
+    } else {
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("content").classList.remove("hidden");
+    }
+  };
+
+// ফিল্টার ফাংশন
+  // Filter function
+function filterProducts(category) {
+  const allItems = document.querySelectorAll('.product-item');
+  document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+
+  allItems.forEach(item => {
+    if (category === 'all' || item.classList.contains(category)) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+    // Product Quick View Feature
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.product-item img').forEach(img => {
+        img.style.cursor = 'pointer';
+        img.onclick = function () {
+          const parent = img.closest('.product-item');
+          document.getElementById('quickViewImg').src = img.src;
+          document.getElementById('quickViewTitle').innerText = parent.querySelector('h3').innerText;
+          document.getElementById('quickViewDesc').innerText = parent.querySelector('p').innerText;
+          document.getElementById('quickViewModal').classList.remove('hidden');
+          // Order button for quick view
+          document.getElementById('quickViewOrderBtn').onclick = function () {
+            openOrderForm(parent.querySelector('h3').innerText, parent.querySelector('p').innerText);
+            closeQuickView();
+          };
+        };
+      });
+    });
+
+ 
+    // Order modal open
+function openOrderModal(productName) {
+  const modal = document.getElementById('orderModal');
+  modal.querySelector('h2').innerText = `📝 ${productName} এর অর্ডার ফর্ম`;
+  modal.classList.remove('hidden');
+}
+
+// Close modals
+function closeQuickView() {
+  document.getElementById('quickViewModal').classList.add('hidden');
+}
+
+function closeOrderModal() {
+  document.getElementById('orderModal').classList.add('hidden');
+}
+
+  // সাবমিট করার পর অটো ক্লোজ ও ক্লিয়ার
+  document.getElementById("orderForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    alert("✅ ধন্যবাদ! আপনার অর্ডার গ্রহণ করা হয়েছে।");
+    this.reset();
+    closeOrderModal();
+  });
+
+    // Order form submit confirmation
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('orderForm').onsubmit = function (e) {
+        e.preventDefault();
+        document.getElementById('orderSuccess').classList.remove('hidden');
+        setTimeout(() => {
+          closeOrderForm();
+        }, 1500);
+        this.reset();
+      };
+    });
+
+     // কুইক ভিউ ক্লোজ
+  function closeQuickView() {
+    document.getElementById('quickViewModal').classList.add('hidden');
+  }
+
+  // অর্ডার ফর্ম ক্লোজ
+  function closeOrderForm() {
+    document.getElementById('orderModal').classList.add('hidden');
+  }
+
+  // অর্ডার সাবমিট হ্যান্ডলার (সিম্পল)
+  document.getElementById("orderForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    // সাধারণভাবে সফল মেসেজ দেখানো
+    document.getElementById("orderSuccess").classList.remove("hidden");
+    // ফর্ম রিসেট
+    this.reset();
+    // কিছুক্ষণ পর ফর্ম বন্ধ
+    setTimeout(() => {
+      document.getElementById("orderModal").classList.add("hidden");
+      document.getElementById("orderSuccess").classList.add("hidden");
+    }, 3000);
+  });
+
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    const content = document.getElementById('content');
+    const audio = document.getElementById('loaderAudio');
+
+    loader.style.display = 'none';
+    content.classList.remove('hidden');
+
+    // Play Salam
+    audio.play().catch(() => {});
+  });
+
+  </script>
+</body>
+</html>
