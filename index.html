@@ -15,8 +15,33 @@
 
   <title>Azaan Sunnati Lebas</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+
   <script src="main.js" defer></script>
+
   <style>
+
+  body {
+    cursor: none; /* Hide default cursor */
+  }
+
+  .custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: #22c55e; /* Tailwind green-500 */
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    box-shadow: 0 0 12px #22c55e, 0 0 24px #22c55e;
+    transform: translate(-50%, -50%);
+    transition: transform 0.08s ease;
+    mix-blend-mode: difference; /* better visibility on light backgrounds */
+  }
+
+
     .tab-button.active {
       background-color: #166534;
       color: white;
@@ -81,24 +106,18 @@ button:hover {
 #productGrid {
   display: grid;
   gap: 1.5rem;
-  grid-template-columns: repeat(1, 1fr); /* ডিফল্ট: ১টি কলাম */
-}
+  grid-template-columns: repeat(1, 1fr); /* Default */
 
-@media (min-width: 480px) {
-  #productGrid {
-    grid-template-columns: repeat(2, 1fr); /* ৪৮০px বা বড় স্ক্রিনে ২ কলাম */
+  @media (min-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
   }
-}
 
-@media (min-width: 768px) {
-  #productGrid {
-    grid-template-columns: repeat(3, 1fr); /* ৭৬৮px বা বড় স্ক্রিনে ৩ কলাম */
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
   }
-}
 
-@media (min-width: 1024px) {
-  #productGrid {
-    grid-template-columns: repeat(4, 1fr); /* ১০২৪px বা বড় স্ক্রিনে ৪ কলাম */
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -126,108 +145,129 @@ button:hover {
       </div>
     </header>
 
-<!-- Hero Section -->
-<section class="bg-green-100 py-8 sm:py-10 md:py-12 px-4">
-  <div class="container mx-auto flex flex-col md:flex-row items-center gap-8">
+<!-- Hero Section with Background Cover & Justified Text -->
+<section class="relative h-auto py-12 px-4 bg-cover bg-center bg-no-repeat" style="background-image: url('cover.jpg');">
+  <!-- Overlay Effect -->
+  <div class="absolute inset-0 bg-black bg-opacity-60 backdrop-blur-sm"></div>
 
-    <!-- Left: Image -->
-    <div class="w-full md:w-1/2">
-      <img src="cover.jpg" alt="Cover Image" class="w-full h-auto rounded-lg shadow-lg" />
+  <!-- Content -->
+  <div class="relative z-10 max-w-4xl mx-auto text-white px-4">
+    <h2 class="text-3xl md:text-4xl font-semibold text-center mb-6">🌿 সুন্নাতের মধ্যেই সৌন্দর্য</h2>
+
+    <div class="text-base md:text-lg leading-relaxed space-y-4 text-justify">
+      <p class="font-semibold text-center">সুন্নাহই আমাদের সৌন্দর্যের আসল মাপকাঠি।</p>
+      <p>
+        আমাদের এখানে প্রিমিয়াম মানের আতর, সুরমা, তাসবীহ, মিসওয়াক এবং খাঁটি কাসেমী টুপি উপলব্ধ। পাশাপাশি, বিভিন্ন নকশায় পাঞ্জাবী, পায়জামা, জুব্বা, শেরওয়ানি, কাবলি, ফতুয়া, কটি ও টুপি সহ সকল ধরনের সুন্নাহ পোশাক সর্বোচ্চ যত্ন এবং পারদর্শিতার সঙ্গে তৈরি করা হয়।
+      </p>
+      <p>
+        প্রত্যেকটি পণ্যই খোদার পথে চলার জন্য আপনাকে সাজাতে তৈরি, যাতে আপনার সৌন্দর্যে ছড়ায় আধ্যাত্মিকতা ও শিষ্টাচার।
+      </p>
+      <p class="font-semibold">
+        আপনার খোঁজ এখানেই শেষ—সুন্নাহ মোতাবেক নিখুঁত পোশাকের জন্য আমাদের সাথে থাকুন।
+      </p>
     </div>
 
-    <!-- Right: Text -->
-    <div class="w-full md:w-1/2 text-center md:text-left">
-      <h2 class="text-3xl font-semibold mb-4 text-gray-800">সুন্নাতের মধ্যেই সৌন্দর্য।</h2>
-      <div class="text-gray-700 text-base leading-relaxed space-y-4">
-        <p class="font-semibold">সুন্নাহই আমাদের সৌন্দর্যের আসল মাপকাঠি।</p>
-        <p>
-          আমাদের এখানে প্রিমিয়াম মানের আতর, সুরমা, তাসবীহ, মিসওয়াক এবং খাঁটি কাসেমী টুপি উপলব্ধ। পাশাপাশি, বিভিন্ন নকশায় পাঞ্জাবী, পায়জামা, জুব্বা, শেরওয়ানি, কাবলি, ফতুয়া, কটি ও টুপি সহ সকল ধরনের সুন্নাহ পোশাক সর্বোচ্চ যত্ন এবং পারদর্শিতার সঙ্গে তৈরি করা হয়।
-        </p>
-        <p>
-          প্রত্যেকটি পণ্যই খোদার পথে চলার জন্য আপনাকে সাজাতে তৈরি, যাতে আপনার সৌন্দর্যে ছড়ায় আধ্যাত্মিকতা ও শিষ্টাচার।
-        </p>
-        <p class="font-semibold">
-          আপনার খোঁজ এখানেই শেষ—সুন্নাহ মোতাবেক নিখুঁত পোশাকের জন্য আমাদের সাথে থাকুন।
-        </p>
-      </div>
+    <div class="text-center mt-8">
+      <a href="#products" class="inline-block bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded shadow-lg transition duration-300">
+        এখনই দেখুন
+      </a>
     </div>
-
   </div>
 </section>
 
 
-    <!-- Products Section -->
-    <section id="products" class="py-12 px-4 bg-gray-50">
-      <h2 class="text-2xl font-bold text-center mb-8">🛍️ পণ্যসমূহ</h2>
-      <div class="flex justify-center space-x-2 mb-6">
-        <button onclick="filterProducts('all')" class="tab-button active px-4 py-2 rounded border border-green-700">সব পণ্য</button>
-        <button onclick="filterProducts('panjabi')" class="tab-button px-4 py-2 rounded border border-green-700">সুন্নতি পোশাক</button>
-        <button onclick="filterProducts('attar')" class="tab-button px-4 py-2 rounded border border-green-700">আতর ও পারফিউম</button>
-        <button onclick="filterProducts('tupi')" class="tab-button px-4 py-2 rounded border border-green-700">কাসেমী টুপি</button>
-      </div>
-      <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Panjabi -->
-        <div class="product-item panjabi bg-white rounded shadow p-4">
-          <img src="logo.jpg" alt="সুন্নতি পাঞ্জাবি" class="mb-2 rounded">
 
-          <h3 class="text-xl font-semibold">সুন্নতি পাঞ্জাবি</h3>
-          <p>দাম: ৮৫০৳</p>
-<button onclick="openOrderModal('পণ্যের নাম')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
-  অর্ডার করুন
-</button>
-        </div>
-        <div class="product-item panjabi bg-white rounded shadow p-4">
-          <img src="logo.jpg" alt="সাদা সুন্নতি পাঞ্জাবি" class="mb-2 rounded">
-          <h3 class="text-xl font-semibold">সাদা সুন্নতি পাঞ্জাবি</h3>
-          <p>দাম: ৯৫০৳</p>
-<button onclick="openOrderModal('পণ্যের নাম')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
-  অর্ডার করুন
-</button>
-        </div>
-        <div class="product-item panjabi bg-white rounded shadow p-4">
-          <img src="logo.jpg" alt="খাকি সুন্নতি পাঞ্জাবি" class="mb-2 rounded">
-          <h3 class="text-xl font-semibold">খাকি সুন্নতি পাঞ্জাবি</h3>
-          <p>দাম: ১০৫০৳</p>
-<button onclick="openOrderModal('পণ্যের নাম')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
-  অর্ডার করুন
-</button>
-        </div>
-        <!-- Attar -->
-        <div class="product-item attar bg-white rounded shadow p-4">
-          <img src="logo.jpg" alt="আতর আল ওয়াহিদ" class="mb-2 rounded">
-          <h3 class="text-xl font-semibold">আতর আল ওয়াহিদ</h3>
-          <p>টাইপ: অয়েল বেইজড, ১২ml, দাম: ৩৫০৳</p>
-<button onclick="openOrderModal('পণ্যের নাম')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
-  অর্ডার করুন
-</button>
-        </div>
-        <div class="product-item attar bg-white rounded shadow p-4">
-          <img src="logo.jpg" alt="আতর মিসক আল আরব" class="mb-2 rounded">
-          <h3 class="text-xl font-semibold">আতর মিসক আল আরব</h3>
-          <p>১২ml অয়েল বেইজড আতর | দাম: ৩৮০৳</p>
-<button onclick="openOrderModal('পণ্যের নাম')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
-  অর্ডার করুন
-</button>
-        </div>
-        <!-- Tupi -->
-        <div class="product-item tupi bg-white rounded shadow p-4">
-          <img src="logo.jpg" alt="কাসেমী টুপি" class="mb-2 rounded">
-          <h3 class="text-xl font-semibold">কাসেমী টুপি</h3>
-          <p>100% কটন, হস্তনির্মিত | দাম: ১৫০৳</p>
-<button onclick="openOrderModal('পণ্যের নাম')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
-  অর্ডার করুন
-</button>
-        </div>
-        <div class="product-item tupi bg-white rounded shadow p-4">
-          <img src="logo.jpg" alt="কাসেমী টুপি (কালো)" class="mb-2 rounded">
-          <h3 class="text-xl font-semibold">কাসেমী টুপি (কালো)</h3>
-          <p>হস্তনির্মিত, ১০০% কটন | দাম: ১৬০৳</p>
-<button onclick="openOrderModal('পণ্যের নাম')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
-  অর্ডার করুন
-</button>
-        </div>
+  <!-- Products Section -->
+<section id="products" class="py-12 px-4 bg-gray-50">
+  <h2 class="text-2xl font-bold text-center mb-8">🛍️ পণ্যসমূহ</h2>
+  <div class="flex justify-center space-x-2 mb-6">
+    <button onclick="filterProducts('all')" class="tab-button active px-4 py-2 rounded border border-green-700">সব পণ্য</button>
+    <button onclick="filterProducts('panjabi')" class="tab-button px-4 py-2 rounded border border-green-700">সুন্নতি পোশাক</button>
+    <button onclick="filterProducts('attar')" class="tab-button px-4 py-2 rounded border border-green-700">আতর ও পারফিউম</button>
+    <button onclick="filterProducts('tupi')" class="tab-button px-4 py-2 rounded border border-green-700">কাসেমী টুপি</button>
+  </div>
+  <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Panjabi -->
+    <div class="product-item panjabi bg-white rounded shadow p-4">
+      <div class="aspect-square mb-2 overflow-hidden rounded">
+        <img src="products/sunnati.jpg" alt="সুন্নতি পাঞ্জাবি" class="object-cover w-full h-full">
       </div>
-    </section>
+      <h3 class="text-xl font-semibold">সুন্নতি পাঞ্জাবি</h3>
+      <p>দাম: ৮৫০৳</p>
+      <button onclick="openOrderModal('সুন্নতি পাঞ্জাবি')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">অর্ডার করুন</button>
+    </div>
+
+    <div class="product-item panjabi bg-white rounded shadow p-4">
+      <div class="aspect-square mb-2 overflow-hidden rounded">
+        <img src="products/sadasuti.jpg" alt="সাদা সুন্নতি পাঞ্জাবি" class="object-cover w-full h-full">
+      </div>
+      <h3 class="text-xl font-semibold">সাদা সুন্নতি পাঞ্জাবি</h3>
+      <p>দাম: ৯৫০৳</p>
+      <button onclick="openOrderModal('সাদা সুন্নতি পাঞ্জাবি')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">অর্ডার করুন</button>
+    </div>
+
+    <div class="product-item panjabi bg-white rounded shadow p-4">
+      <div class="aspect-square mb-2 overflow-hidden rounded">
+        <img src="products/khaki.jpg" alt="খাকি সুন্নতি পাঞ্জাবি" class="object-cover w-full h-full">
+      </div>
+      <h3 class="text-xl font-semibold">খাকি সুন্নতি পাঞ্জাবি</h3>
+      <p>দাম: ১০৫০৳</p>
+      <button onclick="openOrderModal('খাকি সুন্নতি পাঞ্জাবি')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">অর্ডার করুন</button>
+    </div>
+
+    <!-- Attar -->
+    <div class="product-item attar bg-white rounded shadow p-4">
+      <div class="aspect-square mb-2 overflow-hidden rounded">
+        <img src="products/attoralwahid.jpg" alt="আতর আল ওয়াহিদ" class="object-cover w-full h-full">
+      </div>
+      <h3 class="text-xl font-semibold">আতর আল ওয়াহিদ</h3>
+      <p>টাইপ: অয়েল বেইজড, ১২ml, দাম: ৩৫০৳</p>
+      <button onclick="openOrderModal('আতর আল ওয়াহিদ')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">অর্ডার করুন</button>
+    </div>
+
+    <div class="product-item attar bg-white rounded shadow p-4">
+      <div class="aspect-square mb-2 overflow-hidden rounded">
+        <img src="products/atoralkaba.jpg" alt="আতর মিসক আল আরব" class="object-cover w-full h-full">
+      </div>
+      <h3 class="text-xl font-semibold">আতর মিসক আল আরব</h3>
+      <p>১২ml অয়েল বেইজড আতর | দাম: ৩৮০৳</p>
+      <button onclick="openOrderModal('আতর মিসক আল আরব')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">অর্ডার করুন</button>
+    </div>
+
+    <!-- Tupi -->
+    <div class="product-item tupi bg-white rounded shadow p-4">
+      <div class="aspect-square mb-2 overflow-hidden rounded">
+        <img src="logo.jpg" alt="কাসেমী টুপি" class="object-cover w-full h-full">
+      </div>
+      <h3 class="text-xl font-semibold">কাসেমী টুপি</h3>
+      <p>100% কটন, হস্তনির্মিত | দাম: ১৫০৳</p>
+      <button onclick="openOrderModal('কাসেমী টুপি')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">অর্ডার করুন</button>
+    </div>
+
+    <div class="product-item tupi bg-white rounded shadow p-4">
+      <div class="aspect-square mb-2 overflow-hidden rounded">
+        <img src="logo.jpg" alt="কাসেমী টুপি (কালো)" class="object-cover w-full h-full">
+      </div>
+      <h3 class="text-xl font-semibold">কাসেমী টুপি (কালো)</h3>
+      <p>হস্তনির্মিত, ১০০% কটন | দাম: ১৬০৳</p>
+      <button onclick="openOrderModal('কাসেমী টুপি (কালো)')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">অর্ডার করুন</button>
+    </div>
+  </div>
+</section>
+  <!-- Live Section 
+  <section id="live" class="bg-green-100 py-8">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-semibold mb-4">লাইভ সম্প্রচার</h2>
+      <iframe class="mx-auto" width="560" height="315" src="https://www.youtube.com/embed/live_stream?channel=YOUR_CHANNEL_ID" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer class="bg-green-900 text-white text-center p-4">
+    &copy; ২০২৫ Azaan Sunnati Lebas. সর্বস্বত্ব সংরক্ষিত।
+  </footer>
+
 
     <!-- Product Quick View Modal -->
     <div id="quickViewModal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
@@ -241,32 +281,32 @@ button:hover {
     </div>
 
     <!-- Order Form Modal -->
-    <div id="orderModal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
-      <div class="bg-white rounded-lg p-6 w-full max-w-md shadow-lg">
-        <h2 class="text-xl font-bold mb-4">📝 অর্ডার ফর্ম</h2>
-        <form id="orderForm" class="space-y-4">
-          <input type="hidden" id="productName" name="product" />
-          <div>
-            <label class="block text-sm font-medium">নাম:</label>
-            <input type="text" class="w-full border px-3 py-2 rounded" required />
-          </div>
-          <div>
-            <label class="block text-sm font-medium">মোবাইল নম্বর:</label>
-            <input type="tel" class="w-full border px-3 py-2 rounded" required />
-          </div>
-          <div>
-            <label class="block text-sm font-medium">ঠিকানা:</label>
-            <textarea class="w-full border px-3 py-2 rounded" required></textarea>
-          </div>
-          <div class="text-right space-x-2">
-            <button type="button" onclick="closeOrderForm()" class="bg-gray-500 text-white px-4 py-1 rounded">বাতিল</button>
-            <button type="submit" class="bg-green-700 text-white px-4 py-1 rounded hover:bg-green-800">পাঠান</button>
-          </div>
-        </form>
-        <div id="orderSuccess" class="hidden text-green-700 mt-4 font-bold text-center">✅ অর্ডার সফলভাবে গ্রহণ করা হয়েছে!</div>
-      </div>
+
+
+  <!-- Order Modal -->
+  <div id="orderModal" class="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50 hidden">
+    
+    <!-- Form Box -->
+    <div class="relative bg-white rounded-2xl shadow-2xl p-6 w-full max-w-md mx-4">
+      <!-- Close Button -->
+      <button onclick="closeOrderModal()" class="absolute top-2 right-3 text-gray-500 hover:text-red-600 text-2xl">&times;</button>
+
+      <!-- Form Title -->
+      <h2 class="text-2xl font-bold text-center text-green-700 mb-4">অর্ডার ফর্ম</h2>
+
+      <!-- Order Form -->
+      <form id="orderForm" class="space-y-4">
+        <input type="text" placeholder="আপনার নাম" class="w-full border border-gray-300 rounded px-4 py-2" required>
+        
+        <input type="tel" placeholder="মোবাইল নম্বর" class="w-full border border-gray-300 rounded px-4 py-2" required>
+        
+        <textarea placeholder="ঠিকানা লিখুন" class="w-full border border-gray-300 rounded px-4 py-2" rows="3" required></textarea>
+        
+        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded w-full">
+          অর্ডার কনফার্ম করুন
+        </button>
+      </form>
     </div>
-    <!-- ...Other sections if any... -->
   </div>
 
 <!-- চ্যাট বাটন -->
@@ -280,9 +320,19 @@ button:hover {
     Messenger
   </a>
 </div>
+<div class="custom-cursor" id="cursor"></div>
 
 
 <script>
+
+
+    window.addEventListener('load', () => {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('content').classList.remove('hidden');
+
+    const audio = document.getElementById('loaderAudio');
+    audio.play().catch(err => console.warn('Audio autoplay blocked'));
+  });
 
   document.addEventListener("DOMContentLoaded", function () {
       const loader = document.getElementById("loader");
@@ -421,6 +471,23 @@ function closeOrderModal() {
   });
 
 
+  const cursor = document.getElementById("custom-cursor");
+
+  document.addEventListener("mousemove", (e) => {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const cursor = document.createElement("div");
+    cursor.classList.add("custom-cursor");
+    document.body.appendChild(cursor);
+
+    document.addEventListener("mousemove", (e) => {
+      cursor.style.left = e.clientX + "px";
+      cursor.style.top = e.clientY + "px";
+    });
+  });
   </script>
 </body>
 </html>
