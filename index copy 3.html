@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AZAAN SUNNATI LEBAS - ক্যাটাগরি ও প্রোডাক্ট ব্রাউজার</title>
+
+  <style>
+    body {
+      font-family: "Noto Sans Bengali", sans-serif;
+      margin: 0;
+      padding: 0 20px 40px;
+      background: #f0fdf4;
+      color: #222;
+    }
+
+    /* Header */
+    header.top-header {
+      background: #065f46;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      max-width: 1200px;
+      margin: 0 auto 30px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1 1 250px;
+    }
+
+    .header-left img.logo {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: white;
+    }
+
+    .header-left h1 {
+      font-size: 1.8rem;
+      margin: 0;
+      font-weight: 700;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .header-right {
+      flex: 0 0 auto;
+    }
+    .header-right img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid white;
+    }
+
+    /* Search box */
+    .search-container {
+      background: #065f46;
+      padding: 20px;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      max-width: 700px;
+      width: 90%;
+      margin: 0 auto 40px auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    #searchForm {
+      position: relative;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    #searchInput {
+      width: 90%;
+      height: 48px;
+      padding: 0 45px 0 20px;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      border: none;
+      outline: none;
+      box-shadow: 0 3px 10px rgba(16,185,129,0.3);
+      transition: box-shadow 0.3s ease;
+    }
+
+    #searchInput:focus {
+      box-shadow: 0 0 15px #10b981;
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: #10b981;
+      font-size: 20px;
+    }
+
+    /* Section Titles */
+    h2, h3 {
+      color: #065f46;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Grid and Cards */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto 40px auto;
+    }
+    .item-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      padding: 15px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+    .item-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .item-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+    .item-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.2em;
+      color: #047857;
+    }
+    .item-card p {
+      margin: 0;
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    /* Sections visibility */
+    #subcategorySection, #productSection, #searchResultsSection {
+      display: none;
+    }
+
+    /* Buttons */
+    .btn-back {
+      display: block;
+      margin: 0 auto 30px auto;
+      padding: 10px 25px;
+      background-color: #10b981;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1em;
+      max-width: 200px;
+      transition: background-color 0.3s ease;
+    }
+    .btn-back:hover {
+      background-color: #0e9a6e;
+    }
+
+
+
+    .order-btn {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #10b981;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  width: 100%;
+}
+.order-btn:hover {
+  background-color: #0e9a6e;
+}
+
+
+
+
+
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .item-card img {
+        height: 120px;
+      }
+    }
+    @media (max-width: 600px) {
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
+      .item-card img {
+        height: 200px;
+      }
+      header.top-header {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .header-left {
+        justify-content: center;
+        flex: none;
+      }
+      .header-right {
+        order: -1;
+      }
+      .search-container {
+        max-width: 100%;
+        margin: 10px auto 30px;
+        padding: 15px;
+        border-radius: 15px;
+      }
+    }
+
+
+.button-common {
+  padding: 10px 20px;
+  background-color: #10b981;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+  width: 150px;
+  user-select: none;
+}
+
+.button-common:hover {
+  background-color: #0e9a6e;
+}
+
+/* modal এর জন্য সহজ স্টাইল */
+#productModal {
+  display: none; /* প্রথমে লুকানো থাকবে */
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  overflow: auto;
+}
+
+.modal-content {
+  background: #fff;
+  margin: 60px auto;
+  padding: 25px 30px;
+  border-radius: 15px;
+  max-width: 700px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  right: 20px; top: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #666;
+  user-select: none;
+}
+
+.modal-close:hover {
+  color: #000;
+}
+
+.modal-images {
+  text-align: center;
+}
+
+.modal-images img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.modal-thumbs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.modal-thumbs img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.7;
+  border: 2px solid transparent;
+  transition: opacity 0.3s, border-color 0.3s;
+}
+
+.modal-thumbs img.selected,
+.modal-thumbs img:hover {
+  opacity: 1;
+  border-color: #10b981;
+}
+
+.modal-details h2 {
+  margin-top: 0;
+  color: #065f46;
+}
+
+.modal-details p {
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+    
+    /* Modal styles */
+.modal {
+  display: none; /* Hide by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
+  padding-top: 50px;
+  box-sizing: border-box;
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 600px;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.close-btn {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.close-btn:hover {
+  color: #000;
+}
+
+.modal-images {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  margin-bottom: 15px;
+}
+
+.modal-images img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.modal-images img.selected {
+  border-color: #10b981;
+}
+
+/* বড় ছবি */
+#modalMainImage {
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header class="top-header">
+    <div class="header-left">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Islamic_Crescent.svg"
+        alt="Logo"
+        class="logo"
+      />
+      <h1>AZAAN SUNNATI LEBAS</h1>
+    </div>
+    <div class="header-right">
+      <img
+        src="https://randomuser.me/api/portraits/men/75.jpg"
+        alt="Profile Photo"
+      />
+    </div>
+  </header>
+
+  <!-- Search Box Section -->
+  <div class="search-container">
+    <form id="searchForm" onsubmit="return false">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="ক্যাটাগরি, সাবক্যাটাগরি বা প্রোডাক্ট খুঁজুন..."
+        autocomplete="off"
+      />
+      <span class="search-icon">🔍</span>
+    </form>
+  </div>
+
+  <!-- Main category grid -->
+  <h2 id="sectionTitle">📂 ক্যাটাগরি অনুযায়ী ব্রাউজ করুন</h2>
+  <div id="mainCategories" class="grid-container"></div>
+
+  <!-- Subcategory section -->
+  <section id="subcategorySection">
+    <button id="backToMainBtn" class="btn-back">← ফিরে যান</button>
+    <h2 id="subcategoryTitle"></h2>
+    <div id="subcategoryGrid" class="grid-container"></div>
+  </section>
+
+  <!-- Product section -->
+  <section id="productSection">
+    <button id="backToSubBtn" class="btn-back">← সাবক্যাটাগরিতে ফিরে যান</button>
+    <h2 id="productTitle"></h2>
+    <div id="productGrid" class="grid-container"></div>
+  </section>
+
+  <!-- Search results section -->
+  <section id="searchResultsSection">
+    <button id="clearSearchBtn" class="btn-back">← সার্চ ক্লিয়ার করুন</button>
+    <h2>সার্চ রেজাল্ট</h2>
+
+    <h3>মেইন ক্যাটাগরি</h3>
+    <div id="searchMainCats" class="grid-container"></div>
+
+    <h3>সাবক্যাটাগরি</h3>
+    <div id="searchSubCats" class="grid-container"></div>
+
+    <h3>প্রোডাক্ট</h3>
+    <div id="searchProducts" class="grid-container"></div>
+  </section>
+
+<!-- Product Detail Modal -->
+<div id="productDetailModal" class="modal">
+  <div class="modal-content">
+    <span id="modalCloseBtn" class="close-btn">&times;</span>
+    <div class="modal-images" id="modalImages"></div>
+    <h2 id="modalProductName"></h2>
+    <p id="modalProductCode"></p>
+    <p id="modalProductDescription"></p>
+    <p id="modalProductPrice" style="font-weight:bold;"></p>
+    <button id="modalOrderBtn" class="order-btn">Order নাও</button>
+  </div>
+</div>
+
+
+
+<script>
+const categories=[{id:'cat1',name:'পাঞ্জাবি',img:'https://i.ibb.co/pf0XYxv/panjabi.jpg',productCount:400,subcategories:Array(20).fill(null).map((_,si)=>({id:`panjabi-sub${si+1}`,name:`পাঞ্জাবি সাবক্যাটাগরি ${si+1}`,img:`https://picsum.photos/seed/panjabi${si+1}/400/300`,productCount:20,products:Array(20).fill(null).map((_,pi)=>({id:`panjabi-sub${si+1}-prod${pi+1}`,name:`পাঞ্জাবি পণ্য ${si+1}-${pi+1}`,img:`https://picsum.photos/seed/panjabi${si+1}prod${pi+1}/400/300`,price:`৳${1000 + (si*50) + (pi*30)}`}))}))},{id:'cat2',name:'জুব্বা',img:'https://i.ibb.co/ZK4mBc4/jubba.jpg',productCount:400,subcategories:Array(20).fill(null).map((_,si)=>({id:`jubba-sub${si+1}`,name:`জুব্বা সাবক্যাটাগরি ${si+1}`,img:`https://picsum.photos/seed/jubba${si+1}/400/300`,productCount:20,products:Array(20).fill(null).map((_,pi)=>({id:`jubba-sub${si+1}-prod${pi+1}`,name:`জুব্বা পণ্য ${si+1}-${pi+1}`,img:`https://picsum.photos/seed/jubba${si+1}prod${pi+1}/400/300`,price:`৳${1200 + (si*60) + (pi*25)}`}))}))},{id:'cat3',name:'কব্লি',img:'https://i.ibb.co/GxN99M9/kabli.jpg',productCount:400,subcategories:Array(20).fill(null).map((_,si)=>({id:`kabli-sub${si+1}`,name:`কব্লি সাবক্যাটাগরি ${si+1}`,img:`https://picsum.photos/seed/kabli${si+1}/400/300`,productCount:20,products:Array(20).fill(null).map((_,pi)=>({id:`kabli-sub${si+1}-prod${pi+1}`,name:`কব্লি পণ্য ${si+1}-${pi+1}`,img:`https://picsum.photos/seed/kabli${si+1}prod${pi+1}/400/300`,price:`৳${1100 + (si*40) + (pi*20)}`}))}))},{id:'cat4',name:'ফতুয়া',img:'https://i.ibb.co/F7jy0Xm/fotua.jpg',productCount:400,subcategories:Array(20).fill(null).map((_,si)=>({id:`fotua-sub${si+1}`,name:`ফতুয়া সাবক্যাটাগরি ${si+1}`,img:`https://picsum.photos/seed/fotua${si+1}/400/300`,productCount:20,products:Array(20).fill(null).map((_,pi)=>({id:`fotua-sub${si+1}-prod${pi+1}`,name:`ফতুয়া পণ্য ${si+1}-${pi+1}`,img:`https://picsum.photos/seed/fotua${si+1}prod${pi+1}/400/300`,price:`৳${1300 + (si*55) + (pi*35)}`}))}))},{id:'cat5',name:'কাতুয়া',img:'https://i.ibb.co/JnmJmnR/katua.jpg',productCount:400,subcategories:Array(20).fill(null).map((_,si)=>({id:`katua-sub${si+1}`,name:`কাতুয়া সাবক্যাটাগরি ${si+1}`,img:`https://picsum.photos/seed/katua${si+1}/400/300`,productCount:20,products:Array(20).fill(null).map((_,pi)=>({id:`katua-sub${si+1}-prod${pi+1}`,name:`কাতুয়া পণ্য ${si+1}-${pi+1}`,img:`https://picsum.photos/seed/katua${si+1}prod${pi+1}/400/300`,price:`৳${1250 + (si*45) + (pi*22)}`}))}))},{id:'cat6',name:'কোটি',img:'https://i.ibb.co/zX9R9cB/koti.jpg',productCount:400,subcategories:Array(20).fill(null).map((_,si)=>({id:`koti-sub${si+1}`,name:`কোটি সাবক্যাটাগরি ${si+1}`,img:`https://picsum.photos/seed/koti${si+1}/400/300`,productCount:20,products:Array(20).fill(null).map((_,pi)=>({id:`koti-sub${si+1}-prod${pi+1}`,name:`কোটি পণ্য ${si+1}-${pi+1}`,img:`https://picsum.photos/seed/koti${si+1}prod${pi+1}/400/300`,price:`৳${1400 + (si*48) + (pi*33)}`}))}))},{id:'cat7',name:'টুপী',img:'https://i.ibb.co/7kmk7KZ/tupi.jpg',productCount:400,subcategories:Array(20).fill(null).map((_,si)=>({id:`tupi-sub${si+1}`,name:`টুপী সাবক্যাটাগরি ${si+1}`,img:`https://picsum.photos/seed/tupi${si+1}/400/300`,productCount:20,products:Array(20).fill(null).map((_,pi)=>({id:`tupi-sub${si+1}-prod${pi+1}`,name:`টুপী পণ্য ${si+1}-${pi+1}`,img:`https://picsum.photos/seed/tupi${si+1}prod${pi+1}/400/300`,price:`৳${950 + (si*30) + (pi*15)}`}))}))},{id:'cat8',name:'আতর ও পারফিউম',img:'https://i.ibb.co/7bY9mKd/perfume.jpg',productCount:400,subcategories:Array(20).fill(null).map((_,si)=>({id:`perfume-sub${si+1}`,name:`আতর ও পারফিউম সাবক্যাটাগরি ${si+1}`,img:`https://picsum.photos/seed/perfume${si+1}/400/300`,productCount:20,products:Array(20).fill(null).map((_,pi)=>({id:`perfume-sub${si+1}-prod${pi+1}`,name:`আতর ও পারফিউম পণ্য ${si+1}-${pi+1}`,img:`https://picsum.photos/seed/perfume${si+1}prod${pi+1}/400/300`,price:`৳${3000 + (si*100) + (pi*50)}`}))}))},{id:'cat9',name:'গাজরী',img:'https://i.ibb.co/6ZLQHzt/garji.jpg',productCount:400,subcategories:Array(20).fill(null).map((_,si)=>({id:`garji-sub${si+1}`,name:`গাজরী সাবক্যাটাগরি ${si+1}`,img:`https://picsum.photos/seed/garji${si+1}/400/300`,productCount:20,products:Array(20).fill(null).map((_,pi)=>({id:`garji-sub${si+1}-prod${pi+1}`,name:`গাজরী পণ্য ${si+1}-${pi+1}`,img:`https://picsum.photos/seed/garji${si+1}prod${pi+1}/400/300`,price:`৳${1800 + (si*45) + (pi*27)}`}))}))},{id:'cat10',name:'জামদানি',img:'https://i.ibb.co/3B9mtcG/jamdani.jpg',productCount:400,subcategories:Array(20).fill(null).map((_,si)=>({id:`jamdani-sub${si+1}`,name:`জামদানি সাবক্যাটাগরি ${si+1}`,img:`https://picsum.photos/seed/jamdani${si+1}/400/300`,productCount:20,products:Array(20).fill(null).map((_,pi)=>({id:`jamdani-sub${si+1}-prod${pi+1}`,name:`জামদানি পণ্য ${si+1}-${pi+1}`,img:`https://picsum.photos/seed/jamdani${si+1}prod${pi+1}/400/300`,price:`৳${2200 + (si*70) + (pi*40)}`}))}))},{id:'cat11',name:'জুতো',img:'https://i.ibb.co/Y2yxYLF/shoes.jpg',productCount:400,subcategories:Array(20).fill(null).map((_,si)=>({id:`shoes-sub${si+1}`,name:`জুতো সাবক্যাটাগরি ${si+1}`,img:`https://picsum.photos/seed/shoes${si+1}/400/300`,productCount:20,products:Array(20).fill(null).map((_,pi)=>({id:`shoes-sub${si+1}-prod${pi+1}`,name:`জুতো পণ্য ${si+1}-${pi+1}`,img:`https://picsum.photos/seed/shoes${si+1}prod${pi+1}/400/300`,price:`৳${2000 + (si*60) + (pi*25)}`}))}))},{id:'cat12',name:'পাজামা',img:'https://i.ibb.co/nkJzXzS/pajama.jpg',productCount:400,subcategories:Array(20).fill(null).map((_,si)=>({id:`pajama-sub${si+1}`,name:`পাজামা সাবক্যাটাগরি ${si+1}`,img:`https://picsum.photos/seed/pajama${si+1}/400/300`,productCount:20,products:Array(20).fill(null).map((_,pi)=>({id:`pajama-sub${si+1}-prod${pi+1}`,name:`পাজামা পণ্য ${si+1}-${pi+1}`,img:`https://picsum.photos/seed/pajama${si+1}prod${pi+1}/400/300`,price:`৳${1600 + (si*50) + (pi*20)}`}))}))},{id:'cat13',name:'শার্ট',img:'https://i.ibb.co/GnHT7Hq/shirt.jpg',productCount:400,subcategories:Array(20).fill(null).map((_,si)=>({id:`shirt-sub${si+1}`,name:`শার্ট সাবক্যাটাগরি ${si+1}`,img:`https://picsum.photos/seed/shirt${si+1}/400/300`,productCount:20,products:Array(20).fill(null).map((_,pi)=>({id:`shirt-sub${si+1}-prod${pi+1}`,name:`শার্ট পণ্য ${si+1}-${pi+1}`,img:`https://picsum.photos/seed/shirt${si+1}prod${pi+1}/400/300`,price:`৳${1700 + (si*45) + (pi*25)}`}))}))},{id:'cat14',name:'প্যান্ট',img:'https://i.ibb.co/r7jMhZh/pant.jpg',productCount:400,subcategories:Array(20).fill(null).map((_,si)=>({id:`pant-sub${si+1}`,name:`প্যান্ট সাবক্যাটাগরি ${si+1}`,img:`https://picsum.photos/seed/pant${si+1}/400/300`,productCount:20,products:Array(20).fill(null).map((_,pi)=>({id:`pant-sub${si+1}-prod${pi+1}`,name:`প্যান্ট পণ্য ${si+1}-${pi+1}`,img:`https://picsum.photos/seed/pant${si+1}prod${pi+1}/400/300`,price:`৳${1900 + (si*50) + (pi*30)}`}))}))},{id:'cat15',name:'জ্যাকেট',img:'https://i.ibb.co/j3nFG3J/jacket.jpg',productCount:400,subcategories:Array(20).fill(null).map((_,si)=>({id:`jacket-sub${si+1}`,name:`জ্যাকেট সাবক্যাটাগরি ${si+1}`,img:`https://picsum.photos/seed/jacket${si+1}/400/300`,productCount:20,products:Array(20).fill(null).map((_,pi)=>({id:`jacket-sub${si+1}-prod${pi+1}`,name:`জ্যাকেট পণ্য ${si+1}-${pi+1}`,img:`https://picsum.photos/seed/jacket${si+1}prod${pi+1}/400/300`,price:`৳${2100 + (si*60) + (pi*35)}`}))}))},{id:'cat16',name:'স্যুট',img:'https://i.ibb.co/bW0RWnx/suit.jpg',productCount:400,subcategories:Array(20).fill(null).map((_,si)=>({id:`suit-sub${si+1}`,name:`স্যুট সাবক্যাটাগরি ${si+1}`,img:`https://picsum.photos/seed/suit${si+1}/400/300`,productCount:20,products:Array(20).fill(null).map((_,pi)=>({id:`suit-sub${si+1}-prod${pi+1}`,name:`স্যুট পণ্য ${si+1}-${pi+1}`,img:`https://picsum.photos/seed/suit${si+1}prod${pi+1}/400/300`,price:`৳${2600 + (si*80) + (pi*40)}`}))}))},{id:'cat17',name:'শেরওয়ানি',img:'https://i.ibb.co/Zh3XWxk/sherwani.jpg',productCount:400,subcategories:Array(20).fill(null).map((_,si)=>({id:`sherwani-sub${si+1}`,name:`শেরওয়ানি সাবক্যাটাগরি ${si+1}`,img:`https://picsum.photos/seed/sherwani${si+1}/400/300`,productCount:20,products:Array(20).fill(null).map((_,pi)=>({id:`sherwani-sub${si+1}-prod${pi+1}`,name:`শেরওয়ানি পণ্য ${si+1}-${pi+1}`,img:`https://picsum.photos/seed/sherwani${si+1}prod${pi+1}/400/300`,price:`৳${2800 + (si*90) + (pi*45)}`}))}))},{id:'cat18',name:'টোপী',img:'https://i.ibb.co/7kmk7KZ/tupi.jpg',productCount:400,subcategories:Array(20).fill(null).map((_,si)=>({id:`topi-sub${si+1}`,name:`টোপী সাবক্যাটাগরি ${si+1}`,img:`https://picsum.photos/seed/topi${si+1}/400/300`,productCount:20,products:Array(20).fill(null).map((_,pi)=>({id:`topi-sub${si+1}-prod${pi+1}`,name:`টোপী পণ্য ${si+1}-${pi+1}`,img:`https://picsum.photos/seed/topi${si+1}prod${pi+1}/400/300`,price:`৳${1000 + (si*40) + (pi*20)}`}))}))},{id:'cat19',name:'ফ্রাক',img:'https://i.ibb.co/jGJq4cq/frak.jpg',productCount:400,subcategories:Array(20).fill(null).map((_,si)=>({id:`frak-sub${si+1}`,name:`ফ্রাক সাবক্যাটাগরি ${si+1}`,img:`https://picsum.photos/seed/frak${si+1}/400/300`,productCount:20,products:Array(20).fill(null).map((_,pi)=>({id:`frak-sub${si+1}-prod${pi+1}`,name:`ফ্রাক পণ্য ${si+1}-${pi+1}`,img:`https://picsum.photos/seed/frak${si+1}prod${pi+1}/400/300`,price:`৳${3500 + (si*100) + (pi*50)}`}))}))},{id:'cat20',name:'সুন্নতি পোশাক',img:'https://i.ibb.co/5KQqZfL/sunnati.jpg',productCount:400,subcategories:Array(20).fill(null).map((_,si)=>({id:`sunnati-sub${si+1}`,name:`সুন্নতি সাবক্যাটাগরি ${si+1}`,img:`https://picsum.photos/seed/sunnati${si+1}/400/300`,productCount:20,products:Array(20).fill(null).map((_,pi)=>({id:`sunnati-sub${si+1}-prod${pi+1}`,name:`সুন্নতি পণ্য ${si+1}-${pi+1}`,img:`https://picsum.photos/seed/sunnati${si+1}prod${pi+1}/400/300`,price:`৳${1400 + (si*55) + (pi*30)}`}))}))},]
+
+
+
+// প্রয়োজনীয় DOM এলিমেন্টস
+const mainCategoriesDiv = document.getElementById('mainCategories');
+const subcategorySection = document.getElementById('subcategorySection');
+const subcategoryGrid = document.getElementById('subcategoryGrid');
+const subcategoryTitle = document.getElementById('subcategoryTitle');
+const backToMainBtn = document.getElementById('backToMainBtn');
+
+const productSection = document.getElementById('productSection');
+const productGrid = document.getElementById('productGrid');
+const productTitle = document.getElementById('productTitle');
+const backToSubBtn = document.getElementById('backToSubBtn');
+
+const searchInput = document.getElementById('searchInput');
+const searchResultsSection = document.getElementById('searchResultsSection');
+const searchMainCats = document.getElementById('searchMainCats');
+const searchSubCats = document.getElementById('searchSubCats');
+const searchProducts = document.getElementById('searchProducts');
+const sectionTitle = document.getElementById('sectionTitle');
+
+// Modal এলিমেন্টস
+const modal = document.getElementById('productDetailModal');
+const modalCloseBtn = document.getElementById('modalCloseBtn');
+const modalImagesContainer = document.getElementById('modalImages');
+const modalProductName = document.getElementById('modalProductName');
+const modalProductCode = document.getElementById('modalProductCode');
+const modalProductDescription = document.getElementById('modalProductDescription');
+const modalProductPrice = document.getElementById('modalProductPrice');
+const modalOrderBtn = document.getElementById('modalOrderBtn');
+
+// WhatsApp নম্বর (নিজের নম্বর বসাও)
+const whatsappNumber = "8801XXXXXXXXX";
+
+// মেইন ক্যাটাগরি রেন্ডার
+function renderMainCategories() {
+  mainCategoriesDiv.innerHTML = '';
+  categories.forEach(cat => {
+    const catDiv = document.createElement('div');
+    catDiv.classList.add('item-card');
+    catDiv.innerHTML = `
+      <img src="${cat.img}" alt="${cat.name}">
+      <h3>${cat.name}</h3>
+      <p>${cat.productCount} টি পণ্য</p>
+    `;
+    catDiv.onclick = () => showSubcategories(cat.id);
+    mainCategoriesDiv.appendChild(catDiv);
+  });
+  mainCategoriesDiv.style.display = 'grid';
+  subcategorySection.style.display = 'none';
+  productSection.style.display = 'none';
+  if(searchResultsSection) searchResultsSection.style.display = 'none';
+  if(sectionTitle) sectionTitle.textContent = '📂 ক্যাটাগরি অনুযায়ী ব্রাউজ করুন';
+}
+
+// সাবক্যাটাগরি রেন্ডার
+function showSubcategories(catId) {
+  const cat = categories.find(c => c.id === catId);
+  if (!cat) return;
+  subcategoryTitle.textContent = `${cat.name} এর সাবক্যাটাগরি`;
+
+  subcategoryGrid.innerHTML = '';
+  cat.subcategories.forEach(sub => {
+    const subDiv = document.createElement('div');
+    subDiv.classList.add('item-card');
+    subDiv.innerHTML = `
+      <img src="${sub.img}" alt="${sub.name}">
+      <h3>${sub.name}</h3>
+      <p>${sub.productCount} টি পণ্য</p>
+    `;
+    subDiv.onclick = () => showProducts(catId, sub.id);
+    subcategoryGrid.appendChild(subDiv);
+  });
+
+  mainCategoriesDiv.style.display = 'none';
+  subcategorySection.style.display = 'block';
+  productSection.style.display = 'none';
+  if(searchResultsSection) searchResultsSection.style.display = 'none';
+}
+
+// প্রোডাক্ট রেন্ডার ফাংশন সংশোধিত
+function showProducts(catId, subcatId) {
+  const cat = categories.find(c => c.id === catId);
+  if (!cat) return;
+  const subcat = cat.subcategories.find(s => s.id === subcatId);
+  if (!subcat) return;
+
+  productTitle.textContent = `${subcat.name} এর প্রোডাক্টসমূহ`;
+
+  productGrid.innerHTML = '';
+  subcat.products.forEach(prod => {
+    const prodDiv = document.createElement('div');
+    prodDiv.classList.add('item-card');
+    prodDiv.innerHTML = `
+      <img src="${prod.img}" alt="${prod.name}">
+      <h3>${prod.name}</h3>
+      <p>মূল্য: ${prod.price}</p>
+      <button class="details-btn">বিস্তারিত জানুন</button>
+    `;
+
+    // প্রোডাক্ট কার্ডে ক্লিক করলে কিছু হবে না
+    prodDiv.onclick = () => {};
+
+    // "বিস্তারিত জানুন" বাটনে ক্লিক করলে modal খুলবে
+    prodDiv.querySelector('.details-btn').onclick = (e) => {
+      e.stopPropagation();
+      openProductModal(prod);
+    };
+
+    productGrid.appendChild(prodDiv);
+  });
+
+  mainCategoriesDiv.style.display = 'none';
+  subcategorySection.style.display = 'none';
+  productSection.style.display = 'block';
+  if(searchResultsSection) searchResultsSection.style.display = 'none';
+}
+
+// WhatsApp অর্ডার ফাংশন
+function openWhatsAppOrder(product) {
+  const message = encodeURIComponent(
+    `হ্যালো, আমি "${product.name}" (প্রোডাক্ট কোড: ${product.id.toUpperCase()}) অর্ডার দিতে চাই। অনুগ্রহ করে আমাকে যোগাযোগ করুন।`
+  );
+  const url = `https://wa.me/${whatsappNumber}?text=${message}`;
+  window.open(url, '_blank');
+}
+
+// Modal খুলে ডেটা দেখানোর ফাংশন
+function openProductModal(product) {
+  const images = product.images && product.images.length ? product.images : [product.img];
+
+  modalImagesContainer.innerHTML = '';
+
+  // বড় ছবি
+  const mainImg = document.createElement('img');
+  mainImg.id = 'modalMainImage';
+  mainImg.src = images[0];
+  modalImagesContainer.appendChild(mainImg);
+
+  if(images.length > 1){
+    const thumbsContainer = document.createElement('div');
+    thumbsContainer.style.display = 'flex';
+    thumbsContainer.style.gap = '10px';
+    thumbsContainer.style.marginTop = '10px';
+
+    images.forEach((imgSrc, idx) => {
+      const thumb = document.createElement('img');
+      thumb.src = imgSrc;
+      if(idx === 0) thumb.classList.add('selected');
+
+      thumb.onclick = () => {
+        mainImg.src = imgSrc;
+        thumbsContainer.querySelectorAll('img').forEach(i => i.classList.remove('selected'));
+        thumb.classList.add('selected');
+      };
+
+      thumbsContainer.appendChild(thumb);
+    });
+
+    modalImagesContainer.appendChild(thumbsContainer);
+  }
+
+  modalProductName.textContent = product.name;
+  modalProductCode.innerHTML = `প্রোডাক্ট কোড: <b>${product.id.toUpperCase()}</b>`;
+  modalProductDescription.textContent = product.description || "কোনো বর্ণনা পাওয়া যায়নি।";
+  modalProductPrice.textContent = `মূল্য: ${product.price}`;
+
+  modal.style.display = 'block';
+
+  modalOrderBtn.onclick = () => {
+    openWhatsAppOrder(product);
+  };
+}
+
+// modal বন্ধ করার বাটন ও ব্যাকগ্রাউন্ড ক্লিক ইভেন্ট
+modalCloseBtn.onclick = () => {
+  modal.style.display = 'none';
+};
+window.onclick = (e) => {
+  if (e.target === modal) {
+    modal.style.display = 'none';
+  }
+};
+
+// search input event - ক্যাটাগরি, সাবক্যাটাগরি এবং প্রোডাক্ট অনুসন্ধান
+searchInput.addEventListener('input', () => {
+  const query = searchInput.value.trim().toLowerCase();
+  if (!query) {
+    // খালি হলে মূল ক্যাটাগরি দেখাও
+    renderMainCategories();
+    return;
+  }
+
+  // খুঁজে পাওয়া আইটেম সংরক্ষণ করবে
+  let matchedCategories = [];
+  let matchedSubcategories = [];
+  let matchedProducts = [];
+
+  categories.forEach(cat => {
+    if(cat.name.toLowerCase().includes(query)) {
+      matchedCategories.push(cat);
+    }
+    cat.subcategories.forEach(sub => {
+      if(sub.name.toLowerCase().includes(query)) {
+        matchedSubcategories.push({...sub, parentCatName: cat.name, parentCatId: cat.id});
+      }
+      sub.products.forEach(prod => {
+        if(prod.name.toLowerCase().includes(query) || prod.id.toLowerCase().includes(query)) {
+          matchedProducts.push({...prod, parentSubcatName: sub.name, parentSubcatId: sub.id, parentCatName: cat.name, parentCatId: cat.id});
+        }
+      });
+    });
+  });
+
+  // UI আপডেট
+  mainCategoriesDiv.style.display = 'none';
+  subcategorySection.style.display = 'none';
+  productSection.style.display = 'none';
+
+  // এখানে searchResultsSection থাকবে, যদি তুমি আলাদা দিয়ে থাকো
+  // না থাকলে তুমি mainCategoriesDiv কে রিপ্লেস করেও করতে পারো
+
+  // যদি আলাদা করে search results দেখাতে চাও, তাহলে নিচের মতো HTML তৈরি করতে হবে (সেটা তোমার কাছে না থাকলে সরাসরি mainCategoriesDiv তে রেন্ডার করো)
+  
+  // এই জায়গায় তুমি তোমার search result রেন্ডার ফাংশন যোগ করতে পারো
+  // উদাহরণস্বরূপ:
+
+  if(!window.searchResultsSection) {
+    alert("Search result section not found in HTML.");
+    return;
+  }
+  
+  // Search result রেন্ডার (তুমি চাইলে mainCategoriesDiv, subcategoryGrid, productGrid আলাদা করে ইউজ করতে পারো)
+  searchResultsSection.style.display = 'block';
+  sectionTitle.textContent = `🔍 খোঁজার ফলাফল: "${query}"`;
+
+  // ক্যাটাগরি রেন্ডার
+  searchMainCats.innerHTML = '';
+  if(matchedCategories.length > 0){
+    matchedCategories.forEach(cat => {
+      const div = document.createElement('div');
+      div.classList.add('item-card');
+      div.innerHTML = `
+        <img src="${cat.img}" alt="${cat.name}">
+        <h3>${cat.name}</h3>
+        <p>${cat.productCount} টি পণ্য</p>
+      `;
+      div.onclick = () => showSubcategories(cat.id);
+      searchMainCats.appendChild(div);
+    });
+  }
+
+  // সাবক্যাটাগরি রেন্ডার
+  searchSubCats.innerHTML = '';
+  if(matchedSubcategories.length > 0){
+    matchedSubcategories.forEach(sub => {
+      const div = document.createElement('div');
+      div.classList.add('item-card');
+      div.innerHTML = `
+        <img src="${sub.img}" alt="${sub.name}">
+        <h3>${sub.name}</h3>
+        <p>${sub.productCount} টি পণ্য</p>
+        <p><small>Parent: ${sub.parentCatName}</small></p>
+      `;
+      div.onclick = () => showProducts(sub.parentCatId, sub.id);
+      searchSubCats.appendChild(div);
+    });
+  }
+
+  // প্রোডাক্ট রেন্ডার
+  searchProducts.innerHTML = '';
+  if(matchedProducts.length > 0){
+    matchedProducts.forEach(prod => {
+      const prodDiv = document.createElement('div');
+      prodDiv.classList.add('item-card');
+      prodDiv.innerHTML = `
+        <img src="${prod.img}" alt="${prod.name}">
+        <h3>${prod.name}</h3>
+        <p>প্রোডাক্ট কোড: <b>${prod.id.toUpperCase()}</b></p>
+        <p>মূল্য: ${prod.price}</p>
+        <button class="order-btn">Order নাও</button>
+        <p><small>Parent: ${prod.parentCatName} > ${prod.parentSubcatName}</small></p>
+      `;
+
+      prodDiv.onclick = (e) => {
+        if(e.target.classList.contains('order-btn')) return;
+        openProductModal(prod);
+      };
+      prodDiv.querySelector('.order-btn').onclick = (e) => {
+        e.stopPropagation();
+        openWhatsAppOrder(prod);
+      };
+
+      searchProducts.appendChild(prodDiv);
+    });
+  }
+});
+  
+// প্রথমে মেইন ক্যাটাগরি দেখাও
+renderMainCategories();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,362 @@
+const categories = [
+  {
+    id: 'cat1',
+    name: 'পাঞ্জাবি',
+    img: 'https://i.ibb.co/pf0XYxv/panjabi.jpg',
+    productCount: 400,
+    subcategories: Array(20).fill(null).map((_, si) => ({
+      id: `panjabi-sub${si+1}`,
+      name: `পাঞ্জাবি সাবক্যাটাগরি ${si+1}`,
+      img: `https://picsum.photos/seed/panjabi${si+1}/400/300`,
+      productCount: 20,
+      products: Array(20).fill(null).map((_, pi) => ({
+        id: `panjabi-sub${si+1}-prod${pi+1}`,
+        name: `পাঞ্জাবি পণ্য ${si+1}-${pi+1}`,
+        img: `https://picsum.photos/seed/panjabi${si+1}prod${pi+1}/400/300`,
+        price: `৳${1000 + (si*50) + (pi*30)}`
+      }))
+    }))
+  },
+  {
+    id: 'cat2',
+    name: 'জুব্বা',
+    img: 'https://i.ibb.co/ZK4mBc4/jubba.jpg',
+    productCount: 400,
+    subcategories: Array(20).fill(null).map((_, si) => ({
+      id: `jubba-sub${si+1}`,
+      name: `জুব্বা সাবক্যাটাগরি ${si+1}`,
+      img: `https://picsum.photos/seed/jubba${si+1}/400/300`,
+      productCount: 20,
+      products: Array(20).fill(null).map((_, pi) => ({
+        id: `jubba-sub${si+1}-prod${pi+1}`,
+        name: `জুব্বা পণ্য ${si+1}-${pi+1}`,
+        img: `https://picsum.photos/seed/jubba${si+1}prod${pi+1}/400/300`,
+        price: `৳${1200 + (si*60) + (pi*25)}`
+      }))
+    }))
+  },
+  {
+    id: 'cat3',
+    name: 'কব্লি',
+    img: 'https://i.ibb.co/GxN99M9/kabli.jpg',
+    productCount: 400,
+    subcategories: Array(20).fill(null).map((_, si) => ({
+      id: `kabli-sub${si+1}`,
+      name: `কব্লি সাবক্যাটাগরি ${si+1}`,
+      img: `https://picsum.photos/seed/kabli${si+1}/400/300`,
+      productCount: 20,
+      products: Array(20).fill(null).map((_, pi) => ({
+        id: `kabli-sub${si+1}-prod${pi+1}`,
+        name: `কব্লি পণ্য ${si+1}-${pi+1}`,
+        img: `https://picsum.photos/seed/kabli${si+1}prod${pi+1}/400/300`,
+        price: `৳${1100 + (si*40) + (pi*20)}`
+      }))
+    }))
+  },
+  {
+    id: 'cat4',
+    name: 'ফতুয়া',
+    img: 'https://i.ibb.co/F7jy0Xm/fotua.jpg',
+    productCount: 400,
+    subcategories: Array(20).fill(null).map((_, si) => ({
+      id: `fotua-sub${si+1}`,
+      name: `ফতুয়া সাবক্যাটাগরি ${si+1}`,
+      img: `https://picsum.photos/seed/fotua${si+1}/400/300`,
+      productCount: 20,
+      products: Array(20).fill(null).map((_, pi) => ({
+        id: `fotua-sub${si+1}-prod${pi+1}`,
+        name: `ফতুয়া পণ্য ${si+1}-${pi+1}`,
+        img: `https://picsum.photos/seed/fotua${si+1}prod${pi+1}/400/300`,
+        price: `৳${1300 + (si*55) + (pi*35)}`
+      }))
+    }))
+  },
+  {
+    id: 'cat5',
+    name: 'কাতুয়া',
+    img: 'https://i.ibb.co/JnmJmnR/katua.jpg',
+    productCount: 400,
+    subcategories: Array(20).fill(null).map((_, si) => ({
+      id: `katua-sub${si+1}`,
+      name: `কাতুয়া সাবক্যাটাগরি ${si+1}`,
+      img: `https://picsum.photos/seed/katua${si+1}/400/300`,
+      productCount: 20,
+      products: Array(20).fill(null).map((_, pi) => ({
+        id: `katua-sub${si+1}-prod${pi+1}`,
+        name: `কাতুয়া পণ্য ${si+1}-${pi+1}`,
+        img: `https://picsum.photos/seed/katua${si+1}prod${pi+1}/400/300`,
+        price: `৳${1250 + (si*45) + (pi*22)}`
+      }))
+    }))
+  },
+  {
+    id: 'cat6',
+    name: 'কোটি',
+    img: 'https://i.ibb.co/zX9R9cB/koti.jpg',
+    productCount: 400,
+    subcategories: Array(20).fill(null).map((_, si) => ({
+      id: `koti-sub${si+1}`,
+      name: `কোটি সাবক্যাটাগরি ${si+1}`,
+      img: `https://picsum.photos/seed/koti${si+1}/400/300`,
+      productCount: 20,
+      products: Array(20).fill(null).map((_, pi) => ({
+        id: `koti-sub${si+1}-prod${pi+1}`,
+        name: `কোটি পণ্য ${si+1}-${pi+1}`,
+        img: `https://picsum.photos/seed/koti${si+1}prod${pi+1}/400/300`,
+        price: `৳${1400 + (si*48) + (pi*33)}`
+      }))
+    }))
+  },
+  {
+    id: 'cat7',
+    name: 'টুপী',
+    img: 'https://i.ibb.co/7kmk7KZ/tupi.jpg',
+    productCount: 400,
+    subcategories: Array(20).fill(null).map((_, si) => ({
+      id: `tupi-sub${si+1}`,
+      name: `টুপী সাবক্যাটাগরি ${si+1}`,
+      img: `https://picsum.photos/seed/tupi${si+1}/400/300`,
+      productCount: 20,
+      products: Array(20).fill(null).map((_, pi) => ({
+        id: `tupi-sub${si+1}-prod${pi+1}`,
+        name: `টুপী পণ্য ${si+1}-${pi+1}`,
+        img: `https://picsum.photos/seed/tupi${si+1}prod${pi+1}/400/300`,
+        price: `৳${950 + (si*30) + (pi*15)}`
+      }))
+    }))
+  },
+  {
+    id: 'cat8',
+    name: 'আতর ও পারফিউম',
+    img: 'https://i.ibb.co/7bY9mKd/perfume.jpg',
+    productCount: 400,
+    subcategories: Array(20).fill(null).map((_, si) => ({
+      id: `perfume-sub${si+1}`,
+      name: `আতর ও পারফিউম সাবক্যাটাগরি ${si+1}`,
+      img: `https://picsum.photos/seed/perfume${si+1}/400/300`,
+      productCount: 20,
+      products: Array(20).fill(null).map((_, pi) => ({
+        id: `perfume-sub${si+1}-prod${pi+1}`,
+        name: `আতর ও পারফিউম পণ্য ${si+1}-${pi+1}`,
+        img: `https://picsum.photos/seed/perfume${si+1}prod${pi+1}/400/300`,
+        price: `৳${3000 + (si*100) + (pi*50)}`
+      }))
+    }))
+  },
+  {
+    id: 'cat9',
+    name: 'গাজরী',
+    img: 'https://i.ibb.co/6ZLQHzt/garji.jpg',
+    productCount: 400,
+    subcategories: Array(20).fill(null).map((_, si) => ({
+      id: `garji-sub${si+1}`,
+      name: `গাজরী সাবক্যাটাগরি ${si+1}`,
+      img: `https://picsum.photos/seed/garji${si+1}/400/300`,
+      productCount: 20,
+      products: Array(20).fill(null).map((_, pi) => ({
+        id: `garji-sub${si+1}-prod${pi+1}`,
+        name: `গাজরী পণ্য ${si+1}-${pi+1}`,
+        img: `https://picsum.photos/seed/garji${si+1}prod${pi+1}/400/300`,
+        price: `৳${1800 + (si*45) + (pi*27)}`
+      }))
+    }))
+  },
+  {
+    id: 'cat10',
+    name: 'জামদানি',
+    img: 'https://i.ibb.co/3B9mtcG/jamdani.jpg',
+    productCount: 400,
+    subcategories: Array(20).fill(null).map((_, si) => ({
+      id: `jamdani-sub${si+1}`,
+      name: `জামদানি সাবক্যাটাগরি ${si+1}`,
+      img: `https://picsum.photos/seed/jamdani${si+1}/400/300`,
+      productCount: 20,
+      products: Array(20).fill(null).map((_, pi) => ({
+        id: `jamdani-sub${si+1}-prod${pi+1}`,
+        name: `জামদানি পণ্য ${si+1}-${pi+1}`,
+        img: `https://picsum.photos/seed/jamdani${si+1}prod${pi+1}/400/300`,
+        price: `৳${2200 + (si*70) + (pi*40)}`
+      }))
+    }))
+  },
+  {
+    id: 'cat11',
+    name: 'জুতো',
+    img: 'https://i.ibb.co/Y2yxYLF/shoes.jpg',
+    productCount: 400,
+    subcategories: Array(20).fill(null).map((_, si) => ({
+      id: `shoes-sub${si+1}`,
+      name: `জুতো সাবক্যাটাগরি ${si+1}`,
+      img: `https://picsum.photos/seed/shoes${si+1}/400/300`,
+      productCount: 20,
+      products: Array(20).fill(null).map((_, pi) => ({
+        id: `shoes-sub${si+1}-prod${pi+1}`,
+        name: `জুতো পণ্য ${si+1}-${pi+1}`,
+        img: `https://picsum.photos/seed/shoes${si+1}prod${pi+1}/400/300`,
+        price: `৳${2000 + (si*60) + (pi*25)}`
+      }))
+    }))
+  },
+  {
+    id: 'cat12',
+    name: 'পাজামা',
+    img: 'https://i.ibb.co/nkJzXzS/pajama.jpg',
+    productCount: 400,
+    subcategories: Array(20).fill(null).map((_, si) => ({
+      id: `pajama-sub${si+1}`,
+      name: `পাজামা সাবক্যাটাগরি ${si+1}`,
+      img: `https://picsum.photos/seed/pajama${si+1}/400/300`,
+      productCount: 20,
+      products: Array(20).fill(null).map((_, pi) => ({
+        id: `pajama-sub${si+1}-prod${pi+1}`,
+        name: `পাজামা পণ্য ${si+1}-${pi+1}`,
+        img: `https://picsum.photos/seed/pajama${si+1}prod${pi+1}/400/300`,
+        price: `৳${1600 + (si*50) + (pi*20)}`
+      }))
+    }))
+  },
+  {
+    id: 'cat13',
+    name: 'শার্ট',
+    img: 'https://i.ibb.co/GnHT7Hq/shirt.jpg',
+    productCount: 400,
+    subcategories: Array(20).fill(null).map((_, si) => ({
+      id: `shirt-sub${si+1}`,
+      name: `শার্ট সাবক্যাটাগরি ${si+1}`,
+      img: `https://picsum.photos/seed/shirt${si+1}/400/300`,
+      productCount: 20,
+      products: Array(20).fill(null).map((_, pi) => ({
+        id: `shirt-sub${si+1}-prod${pi+1}`,
+        name: `শার্ট পণ্য ${si+1}-${pi+1}`,
+        img: `https://picsum.photos/seed/shirt${si+1}prod${pi+1}/400/300`,
+        price: `৳${1700 + (si*45) + (pi*25)}`
+      }))
+    }))
+  },
+  {
+    id: 'cat14',
+    name: 'প্যান্ট',
+    img: 'https://i.ibb.co/r7jMhZh/pant.jpg',
+    productCount: 400,
+    subcategories: Array(20).fill(null).map((_, si) => ({
+      id: `pant-sub${si+1}`,
+      name: `প্যান্ট সাবক্যাটাগরি ${si+1}`,
+      img: `https://picsum.photos/seed/pant${si+1}/400/300`,
+      productCount: 20,
+      products: Array(20).fill(null).map((_, pi) => ({
+        id: `pant-sub${si+1}-prod${pi+1}`,
+        name: `প্যান্ট পণ্য ${si+1}-${pi+1}`,
+        img: `https://picsum.photos/seed/pant${si+1}prod${pi+1}/400/300`,
+        price: `৳${1900 + (si*50) + (pi*30)}`
+      }))
+    }))
+  },
+  {
+    id: 'cat15',
+    name: 'জ্যাকেট',
+    img: 'https://i.ibb.co/j3nFG3J/jacket.jpg',
+    productCount: 400,
+    subcategories: Array(20).fill(null).map((_, si) => ({
+      id: `jacket-sub${si+1}`,
+      name: `জ্যাকেট সাবক্যাটাগরি ${si+1}`,
+      img: `https://picsum.photos/seed/jacket${si+1}/400/300`,
+      productCount: 20,
+      products: Array(20).fill(null).map((_, pi) => ({
+        id: `jacket-sub${si+1}-prod${pi+1}`,
+        name: `জ্যাকেট পণ্য ${si+1}-${pi+1}`,
+        img: `https://picsum.photos/seed/jacket${si+1}prod${pi+1}/400/300`,
+        price: `৳${2100 + (si*60) + (pi*35)}`
+      }))
+    }))
+  },
+  {
+    id: 'cat16',
+    name: 'স্যুট',
+    img: 'https://i.ibb.co/bW0RWnx/suit.jpg',
+    productCount: 400,
+    subcategories: Array(20).fill(null).map((_, si) => ({
+      id: `suit-sub${si+1}`,
+      name: `স্যুট সাবক্যাটাগরি ${si+1}`,
+      img: `https://picsum.photos/seed/suit${si+1}/400/300`,
+      productCount: 20,
+      products: Array(20).fill(null).map((_, pi) => ({
+        id: `suit-sub${si+1}-prod${pi+1}`,
+        name: `স্যুট পণ্য ${si+1}-${pi+1}`,
+        img: `https://picsum.photos/seed/suit${si+1}prod${pi+1}/400/300`,
+        price: `৳${2600 + (si*80) + (pi*40)}`
+      }))
+    }))
+  },
+  {
+    id: 'cat17',
+    name: 'শেরওয়ানি',
+    img: 'https://i.ibb.co/Zh3XWxk/sherwani.jpg',
+    productCount: 400,
+    subcategories: Array(20).fill(null).map((_, si) => ({
+      id: `sherwani-sub${si+1}`,
+      name: `শেরওয়ানি সাবক্যাটাগরি ${si+1}`,
+      img: `https://picsum.photos/seed/sherwani${si+1}/400/300`,
+      productCount: 20,
+      products: Array(20).fill(null).map((_, pi) => ({
+        id: `sherwani-sub${si+1}-prod${pi+1}`,
+        name: `শেরওয়ানি পণ্য ${si+1}-${pi+1}`,
+        img: `https://picsum.photos/seed/sherwani${si+1}prod${pi+1}/400/300`,
+        price: `৳${2800 + (si*90) + (pi*45)}`
+      }))
+    }))
+  },
+  {
+    id: 'cat18',
+    name: 'টোপী',
+    img: 'https://i.ibb.co/7kmk7KZ/tupi.jpg',
+    productCount: 400,
+    subcategories: Array(20).fill(null).map((_, si) => ({
+      id: `topi-sub${si+1}`,
+      name: `টোপী সাবক্যাটাগরি ${si+1}`,
+      img: `https://picsum.photos/seed/topi${si+1}/400/300`,
+      productCount: 20,
+      products: Array(20).fill(null).map((_, pi) => ({
+        id: `topi-sub${si+1}-prod${pi+1}`,
+        name: `টোপী পণ্য ${si+1}-${pi+1}`,
+        img: `https://picsum.photos/seed/topi${si+1}prod${pi+1}/400/300`,
+        price: `৳${1000 + (si*40) + (pi*20)}`
+      }))
+    }))
+  },
+  {
+    id: 'cat19',
+    name: 'ফ্রাক',
+    img: 'https://i.ibb.co/jGJq4cq/frak.jpg',
+    productCount: 400,
+    subcategories: Array(20).fill(null).map((_, si) => ({
+      id: `frak-sub${si+1}`,
+      name: `ফ্রাক সাবক্যাটাগরি ${si+1}`,
+      img: `https://picsum.photos/seed/frak${si+1}/400/300`,
+      productCount: 20,
+      products: Array(20).fill(null).map((_, pi) => ({
+        id: `frak-sub${si+1}-prod${pi+1}`,
+        name: `ফ্রাক পণ্য ${si+1}-${pi+1}`,
+        img: `https://picsum.photos/seed/frak${si+1}prod${pi+1}/400/300`,
+        price: `৳${3500 + (si*100) + (pi*50)}`
+      }))
+    }))
+  },
+  {
+    id: 'cat20',
+    name: 'সুন্নতি পোশাক',
+    img: 'https://i.ibb.co/5KQqZfL/sunnati.jpg',
+    productCount: 400,
+    subcategories: Array(20).fill(null).map((_, si) => ({
+      id: `sunnati-sub${si+1}`,
+      name: `সুন্নতি সাবক্যাটাগরি ${si+1}`,
+      img: `https://picsum.photos/seed/sunnati${si+1}/400/300`,
+      productCount: 20,
+      products: Array(20).fill(null).map((_, pi) => ({
+        id: `sunnati-sub${si+1}-prod${pi+1}`,
+        name: `সুন্নতি পণ্য ${si+1}-${pi+1}`,
+        img: `https://picsum.photos/seed/sunnati${si+1}prod${pi+1}/400/300`,
+        price: `৳${1400 + (si*55) + (pi*30)}`
+      }))
+    }))
+  },
+];

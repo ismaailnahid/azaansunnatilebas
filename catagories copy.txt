@@ -1,0 +1,16 @@
+// উদাহরণ:
+products: [
+  {
+    id: 'linen-prod-1',
+    name: 'লেনিন পাঞ্জাবি প্রোডাক্ট 1',
+    img: 'https://i.ibb.co/4KfZr4Q/linen-panjabi.jpg',
+    images: [
+      'https://i.ibb.co/4KfZr4Q/linen-panjabi.jpg',
+      'https://i.ibb.co/xyz/linen-side.jpg',
+      'https://i.ibb.co/abc/linen-back.jpg',
+    ],
+    price: '৳1850',
+    description: 'এই পাঞ্জাবিটি নরম এবং উচ্চমানের লেনিন কাপড় দিয়ে তৈরি। খুব আরামদায়ক ও স্টাইলিশ।',
+  },
+  ...
+]
