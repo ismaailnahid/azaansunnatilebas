@@ -1,978 +1,960 @@
 <!DOCTYPE html>
 <html lang="bn">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali&display=swap"
-      rel="stylesheet"
-    />
 
-    <meta name="title" content="AZZAN SUNNATI LEBAS" />
-    <meta
-      name="description"
-      content="সুন্নাহ মোতাবেক পোশাক, আতর, ইসলামিক উপহার ও আরও অনেক কিছু – AZZAN SUNNATI LEBAS।"
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://yourdomain.com" />
-    <meta property="og:title" content="AZZAN SUNNATI LEBAS" />
-    <meta
-      property="og:description"
-      content="সুন্নাহই আমাদের সৌন্দর্যের আসল মাপকাঠি।"
-    />
-    <meta property="og:image" content="https://azaansunnatilebas.vercel.app" />
-    <title>AZAAN SUNNATI LEBAS</title>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali&display=swap");
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali&display=swap" rel="stylesheet" />
 
-      body {
-        font-family: "Noto Sans Bengali", sans-serif;
-        margin: 0;
+  <meta name="title" content="AZAAN SUNNATI LEBAS" />
+  <meta name="description" content="সুন্নাহ মোতাবেক পোশাক, আতর, ইসলামিক উপহার ও আরও অনেক কিছু – AZZAN SUNNATI LEBAS।" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://azaansunnatilebas.vercel.app/" />
+  <meta property="og:site_name" content="AZAAN SUNNATI LEBAS" />
+  <meta name="keywords" content="সুন্নাহ পোশাক, আতর, ইসলামিক উপহার, পাঞ্জাবী, জুব্বা, ফতুয়া, কাসেমী টুপি" />
+  <meta name="author" content="AZAAN SUNNATI LEBAS" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#065f46" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="msapplication-TileColor" content="#065f46" />
+  <meta name="msapplication-TileImage" content="/logo.jpg" />
+  <link rel="icon" href="/logo.jpg" type="image/jpg" />
+  <link rel="apple-touch-icon" href="/logo.jpg" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="application-name" content="AZAAN SUNNATI LEBAS" />
+  <meta name="apple-mobile-web-app-title" content="AZAAN SUNNATI LEBAS" />
+  <meta name="msapplication-tooltip" content="AZAAN SUNNATI LEBAS" />
+  <meta name="msapplication-starturl" content="/" />
+  <meta name="msapplication-navbutton-color" content="#065f46" />
+  <meta name="theme-color" content="#065f46" />
+  <meta property="og:title" content="AZAAN SUNNATI LEBAS" />
+  <meta property="og:description" content="সুন্নাহই আমাদের সৌন্দর্যের আসল মাপকাঠি।" />
+
+
+  <meta property="og:image" content="https://azaansunnatilebas.vercel.app/cover.jpg" />
+  <!-- Canonical Link -->
+  <link rel="canonical" href="https://azaansunnatilebas.vercel.app/" />
+
+  <!-- Twitter Card Support -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AZAAN SUNNATI LEBAS" />
+  <meta name="twitter:description" content="সুন্নাহই আমাদের সৌন্দর্যের আসল মাপকাঠি।" />
+  <meta name="twitter:image" content="https://azaansunnatilebas.vercel.app/cover.jpg" />
+
+  <title>AZAAN SUNNATI LEBAS</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali&display=swap");
+
+    body {
+      font-family: "Noto Sans Bengali", sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f9fafb;
+      color: #222;
+    }
+
+    h1,
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #065f46;
+    }
+
+    /* Header Custom Styling */
+    header.top-header {
+      background: #065f46;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .logo-container {
+      flex: 0 0 auto;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      border-radius: 10px;
+      background: white;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1 1 250px;
+      justify-content: flex-start;
+    }
+
+    .header-left img.logo {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: white;
+    }
+
+    .header-left h1 {
+      font-size: 1.8rem;
+      margin: 0;
+      font-weight: 700;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .header-right {
+      flex: 0 0 auto;
+    }
+
+    .header-right img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid white;
+    }
+
+    .header-title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: 700;
+      user-select: none;
+      white-space: nowrap;
+      color: white;
+      pointer-events: none;
+      max-width: 70%;
+      text-align: center;
+    }
+
+    /* Search */
+    .search-container {
+      background: #065f46;
+      padding: 20px;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      max-width: 700px;
+      width: 90%;
+      margin: 15px auto 40px auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    #searchForm {
+      position: relative;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    #searchInput {
+      width: 100%;
+      height: 48px;
+      padding: 0 45px 0 20px;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      border: none;
+      outline: none;
+      box-shadow: 0 3px 10px rgba(16, 185, 129, 0.3);
+      transition: box-shadow 0.3s ease;
+    }
+
+    #searchInput:focus {
+      box-shadow: 0 0 15px #10b981;
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: #10b981;
+      font-size: 20px;
+    }
+
+    /* Grid */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto 40px auto;
+    }
+
+    .item-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+      user-select: none;
+    }
+
+    .item-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .item-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
+    .item-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.2em;
+      color: #047857;
+    }
+
+    .item-card p {
+      margin: 0;
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    /* Buttons */
+    .button-common {
+      padding: 10px 20px;
+      background-color: #10b981;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+      width: 150px;
+      user-select: none;
+    }
+
+    .button-common:hover {
+      background-color: #0e9a6e;
+    }
+
+    /* Hide sections initially */
+    #subcategorySection,
+    #productSection,
+    #searchResultsSection {
+      display: none;
+    }
+
+    /* Modal styles */
+    #productModal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      overflow: auto;
+    }
+
+    .modal-content {
+      background: #fff;
+      margin: 60px auto;
+      padding: 25px 30px;
+      border-radius: 15px;
+      max-width: 700px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      right: 20px;
+      top: 15px;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #666;
+      user-select: none;
+    }
+
+    .modal-close:hover {
+      color: #000;
+    }
+
+    .modal-images {
+      text-align: center;
+    }
+
+    .modal-images img#modalMainImage {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+
+    .modal-thumbs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .modal-thumbs img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      opacity: 0.7;
+      border: 2px solid transparent;
+      transition: opacity 0.3s, border-color 0.3s;
+    }
+
+    .modal-thumbs img.selected,
+    .modal-thumbs img:hover {
+      opacity: 1;
+      border-color: #10b981;
+    }
+
+    .modal-details h2 {
+      margin-top: 0;
+      color: #065f46;
+    }
+
+    .modal-details p {
+      margin: 10px 0;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .grid-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 992px) {
+      .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .item-card img {
+        height: 140px;
+      }
+    }
+
+
+    /* Modal Responsive Fix */
+    @media (max-width: 768px) {
+      .modal-content {
+        width: 90%;
+        margin: 40px auto;
         padding: 20px;
-        background: #f9fafb;
-        color: #222;
-      }
-      h1,
-      h2 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: #065f46;
       }
 
-      /* Header Custom Styling */
-      header.top-header {
-        background: #065f46;
-        color: white;
-        padding: 15px 20px;
-        border-radius: 0 0 20px 20px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 15px;
-        flex-wrap: wrap;
-      }
-
-      .logo-container {
-        flex: 0 0 auto;
-      }
-
-      .logo {
-        width: 50px;
-        height: 50px;
+      .modal-images img#modalMainImage {
+        max-height: 300px;
         object-fit: contain;
-        border-radius: 10px;
-        background: white;
+      }
+
+      .modal-thumbs img {
+        width: 60px;
+        height: 60px;
+      }
+
+      .modal-details h2 {
+        font-size: 1.4rem;
+      }
+
+      .modal-details p {
+        font-size: 0.95rem;
+      }
+
+      #modalOrderBtn {
+        font-size: 1rem;
+        padding: 10px;
+      }
+    }
+
+
+    @media (max-width: 640px) {
+      header.top-header {
+        flex-direction: column;
+        gap: 12px;
       }
 
       .header-left {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        flex: 1 1 250px;
-        justify-content: flex-start;
+        justify-content: center;
+        flex: none;
       }
 
-      .header-left img.logo {
-        width: 50px;
-        height: 50px;
-        object-fit: contain;
-        border-radius: 8px;
-        background: white;
+      .header-right {
+        order: -1;
       }
+
+      .search-container {
+        max-width: 100%;
+        margin: 10px auto 30px;
+        padding: 15px;
+        border-radius: 15px;
+      }
+
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
+
+      .item-card img {
+        height: 200px;
+      }
+    }
+
+    /* Scrollbar design */
+    /* Chrome, Edge, Safari */
+    ::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #065f46;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #10b981;
+      border-radius: 10px;
+      border: 2px solid #065f46;
+      transition: background-color 0.3s ease;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #34d399;
+    }
+
+    /* Firefox */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: #10b981 #065f46;
+    }
+
+    @media (max-width: 600px) {
+      header.top-header {
+        flex-direction: column;
+        /* এক কলামে সাজাবে */
+        align-items: center;
+        /* মাঝখানে সেন্টার করবে */
+        height: auto;
+        /* উচ্চতা স্বয়ংক্রিয় হবে */
+        padding: 20px;
+        /* মোবাইলে একটু বেশি padding */
+        gap: 15px;
+        /* উপাদানের মাঝে জায়গা */
+      }
+
+      .logo-container,
+      .header-right {
+        flex: none;
+        /* জায়গা নিজের মতো নেবে */
+        width: auto;
+      }
+
+      .header-left {
+        flex: none;
+        width: 100%;
+        text-align: center;
+        /* নাম মাঝখানে থাকবে */
+      }
+
       .header-left h1 {
         font-size: 1.8rem;
         margin: 0;
-        font-weight: 700;
-        user-select: none;
-        white-space: nowrap;
+        white-space: normal;
+        /* মোবাইলে টাইটেল লাইন ব্রেক হবে */
       }
-      .header-right {
-        flex: 0 0 auto;
-      }
-      .header-right img {
-        width: 60px;
-        height: 60px;
-        object-fit: cover;
-        border-radius: 50%;
-        border: 2px solid white;
-      }
+
       .header-title {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        margin: 0;
-        font-size: 1.8rem;
-        font-weight: 700;
-        user-select: none;
-        white-space: nowrap;
-        color: white;
-        pointer-events: none;
-        max-width: 70%;
-        text-align: center;
-      }
-
-      /* Search */
-      .search-container {
-        background: #065f46;
-        padding: 20px;
-        border-radius: 0 0 20px 20px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        max-width: 700px;
-        width: 90%;
-        margin: 15px   auto 40px auto;
-        display: flex;
-        justify-content: center;
-      }
-      #searchForm {
-        position: relative;
-        width: 100%;
-        max-width: 700px;
-      }
-      #searchInput {
-        width: 100%;
-        height: 48px;
-        padding: 0 45px 0 20px;
-        font-size: 1.1rem;
-        border-radius: 30px;
-        border: none;
-        outline: none;
-        box-shadow: 0 3px 10px rgba(16, 185, 129, 0.3);
-        transition: box-shadow 0.3s ease;
-      }
-      #searchInput:focus {
-        box-shadow: 0 0 15px #10b981;
-      }
-      .search-icon {
-        position: absolute;
-        right: 15px;
-        top: 50%;
-        transform: translateY(-50%);
-        pointer-events: none;
-        color: #10b981;
-        font-size: 20px;
-      }
-
-      /* Grid */
-      .grid-container {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-        max-width: 1200px;
-        margin: 0 auto 40px auto;
-      }
-      .item-card {
-        background: #fff;
-        border-radius: 10px;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-        padding: 15px;
-        text-align: center;
-        cursor: pointer;
-        transition: transform 0.15s ease;
-        user-select: none;
-      }
-      .item-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-      }
-      .item-card img {
-        width: 100%;
-        height: 150px;
-        object-fit: cover;
-        border-radius: 8px;
-        margin-bottom: 12px;
-      }
-      .item-card h3 {
-        margin: 0 0 8px;
-        font-size: 1.2em;
-        color: #047857;
-      }
-      .item-card p {
-        margin: 0;
-        font-size: 0.9em;
-        color: #555;
-      }
-
-      /* Buttons */
-      .button-common {
-        padding: 10px 20px;
-        background-color: #10b981;
-        color: white;
-        border: none;
-        border-radius: 30px;
-        cursor: pointer;
-        font-weight: bold;
-        font-size: 1rem;
-        transition: background-color 0.3s ease;
-        margin-top: 10px;
-        width: 150px;
-        user-select: none;
-      }
-      .button-common:hover {
-        background-color: #0e9a6e;
-      }
-
-      /* Hide sections initially */
-      #subcategorySection,
-      #productSection,
-      #searchResultsSection {
-        display: none;
-      }
-
-      /* Modal styles */
-      #productModal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.6);
-        overflow: auto;
-      }
-      .modal-content {
-        background: #fff;
-        margin: 60px auto;
-        padding: 25px 30px;
-        border-radius: 15px;
-        max-width: 700px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        position: relative;
-      }
-      .modal-close {
-        position: absolute;
-        right: 20px;
-        top: 15px;
-        font-size: 24px;
-        font-weight: bold;
-        cursor: pointer;
-        color: #666;
-        user-select: none;
-      }
-      .modal-close:hover {
-        color: #000;
-      }
-      .modal-images {
-        text-align: center;
-      }
-      .modal-images img#modalMainImage {
+        position: static;
+        /* মোবাইলে fixed না করে সাধারণ ফ্লোতে রাখবে */
+        transform: none;
         max-width: 100%;
-        border-radius: 10px;
-        margin-bottom: 12px;
-      }
-      .modal-thumbs {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 10px;
-        flex-wrap: wrap;
-      }
-      .modal-thumbs img {
-        width: 70px;
-        height: 70px;
-        object-fit: cover;
-        border-radius: 8px;
-        cursor: pointer;
-        opacity: 0.7;
-        border: 2px solid transparent;
-        transition: opacity 0.3s, border-color 0.3s;
-      }
-      .modal-thumbs img.selected,
-      .modal-thumbs img:hover {
-        opacity: 1;
-        border-color: #10b981;
-      }
-      .modal-details h2 {
-        margin-top: 0;
-        color: #065f46;
-      }
-      .modal-details p {
-        margin: 10px 0;
+        margin: 0;
+        padding: 0 10px;
         font-size: 1rem;
-        color: #333;
+        /* ফন্ট সাইজ কমিয়ে দিলাম */
+        white-space: normal;
+        /* শব্দ ভাঙবে, লাইন ব্রেক দিবে */
+        text-align: center;
+        padding: 0 10px;
+        /* একটু প্যাডিং দিলাম */
       }
 
-      /* Responsive */
-      @media (max-width: 1200px) {
-        .grid-container {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
-      @media (max-width: 992px) {
-        .grid-container {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .item-card img {
-          height: 140px;
-        }
-      }
-      @media (max-width: 640px) {
-        header.top-header {
-          flex-direction: column;
-          gap: 12px;
-        }
-        .header-left {
-          justify-content: center;
-          flex: none;
-        }
-        .header-right {
-          order: -1;
-        }
-        .search-container {
-          max-width: 100%;
-          margin: 10px auto 30px;
-          padding: 15px;
-          border-radius: 15px;
-        }
-        .grid-container {
-          grid-template-columns: 1fr;
-        }
-        .item-card img {
-          height: 200px;
+
+      @media (max-width: 320px) {
+        .header-title {
+          font-size: 1.1rem;
         }
       }
 
-      /* Scrollbar design */
-      /* Chrome, Edge, Safari */
-      ::-webkit-scrollbar {
-        width: 12px;
-        height: 12px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #065f46;
-        border-radius: 10px;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #10b981;
-        border-radius: 10px;
-        border: 2px solid #065f46;
-        transition: background-color 0.3s ease;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #34d399;
-      }
-      /* Firefox */
-      * {
-        scrollbar-width: thin;
-        scrollbar-color: #10b981 #065f46;
-      }
-      @media (max-width: 600px) {
-  header.top-header {
-    flex-direction: column; /* এক কলামে সাজাবে */
-    align-items: center; /* মাঝখানে সেন্টার করবে */
-    height: auto; /* উচ্চতা স্বয়ংক্রিয় হবে */
-    padding: 20px; /* মোবাইলে একটু বেশি padding */
-    gap: 15px; /* উপাদানের মাঝে জায়গা */
-  }
-  .logo-container,
-  .header-right {
-    flex: none; /* জায়গা নিজের মতো নেবে */
-    width: auto;
-  }
-  .header-left {
-    flex: none;
-    width: 100%;
-    text-align: center; /* নাম মাঝখানে থাকবে */
-  }
-  .header-left h1 {
-    font-size: 1.8rem;
-    margin: 0;
-    white-space: normal; /* মোবাইলে টাইটেল লাইন ব্রেক হবে */
-  }
-  .header-title {
-    position: static; /* মোবাইলে fixed না করে সাধারণ ফ্লোতে রাখবে */
-    transform: none;
-    max-width: 100%;
-    margin: 0;
-    padding: 0 10px;
-    font-size: 1rem; /* ফন্ট সাইজ কমিয়ে দিলাম */
-    white-space: normal; /* শব্দ ভাঙবে, লাইন ব্রেক দিবে */
-    text-align: center;
-    padding: 0 10px; /* একটু প্যাডিং দিলাম */
-  }
+    }
+  </style>
+</head>
 
-@media (max-width: 320px) {
-  .header-title {
-    font-size: 1.1rem;
-  }
-}
-
-}
-
-    </style>
-  </head>
-  <body>
-    <!-- Header Section -->
-    <header class="top-header">
-      <div class="logo-container">
-        <img
-          src="/cover.jpg"
-          alt="Logo"
-          class="logo"
-        />
-      </div>
-      <h1 class="header-title">AZAAN SUNNATI LEBAS</h1>
-      <div class="header-right">
-        <img
-          src="logo.jpg"
-          alt="Profile Photo"
-          class="rounded-full border-2 border-white w-14 h-14 object-cover"
-        />
-      </div>
-    </header>
-
-    <!-- Search Box Section -->
-    <div class="search-container">
-      <form id="searchForm" onsubmit="return handleSearch(event)" class="relative w-full max-w-xl mx-auto">
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="আপনি কি খুঁজছেন?"
-          autocomplete="off"
-          class="w-full h-12 px-5 pr-12 rounded-full text-lg focus:outline-none shadow-md focus:shadow-emerald-400 transition"
-        />
-        <span class="search-icon absolute right-4 top-1/2 transform -translate-y-1/2 text-emerald-500 text-xl pointer-events-none">
-          🔍
-        </span>
-      </form>
+<body>
+  <!-- Header Section -->
+  <header class="top-header">
+    <div class="logo-container">
+      <img src="/cover.jpg" alt="Logo" class="logo" />
     </div>
-
-    <!-- Main Categories -->
-    <div id="mainCategories" class="grid-container"></div>
-
-    <!-- Subcategory Section -->
-    <section id="subcategorySection" class="hidden px-4 sm:px-6 lg:px-8">
-      <button
-        id="backToMainBtn"
-        class="button-common max-w-xs mb-8"
-      >
-        ← ফিরে যান
-      </button>
-      <h2 id="subcategoryTitle"></h2>
-      <div id="subcategoryGrid" class="grid-container"></div>
-    </section>
-
-    <!-- Product Section -->
-    <section id="productSection" class="hidden px-4 sm:px-6 lg:px-8">
-      <button
-        id="backToSubBtn"
-        class="button-common max-w-xs mb-8"
-      >
-        ← সাবক্যাটাগরিতে ফিরে যান
-      </button>
-      <h2 id="productTitle"></h2>
-      <div id="productGrid" class="grid-container"></div>
-    </section>
-
-    <!-- Search Results Section -->
-    <section id="searchResultsSection" class="hidden px-4 sm:px-6 lg:px-8">
-      <button
-        id="backToSearchMainBtn"
-        class="button-common max-w-xs mb-8"
-      >
-        ← মূল পেজে ফিরে যান
-      </button>
-      <h2 id="searchResultsTitle" class="mb-6">খোঁজার ফলাফল</h2>
-      <div id="searchResultsGrid" class="grid-container"></div>
-    </section>
-
-    <!-- Product Details Modal -->
-    <div id="productModal" class="hidden fixed inset-0 bg-black bg-opacity-60 overflow-auto z-50">
-      <div class="modal-content bg-white rounded-lg p-8 max-w-xl mx-auto mt-16 relative shadow-lg">
-        <button
-          class="modal-close absolute top-5 right-5 text-3xl font-bold text-gray-600 hover:text-black focus:outline-none"
-          id="modalCloseBtn"
-          aria-label="Close modal"
-        >
-          &times;
-        </button>
-        <div class="modal-images text-center" id="modalImagesContainer">
-          <img
-            id="modalMainImage"
-            src=""
-            alt="Product Image"
-            class="max-w-full rounded-lg mb-4"
-          />
-          <div class="modal-thumbs flex justify-center gap-4 flex-wrap"></div>
-        </div>
-        <div class="modal-details">
-          <h2 id="modalProductName" class="text-2xl font-semibold text-emerald-700 mb-4"></h2>
-          <p id="modalProductDescription" class="text-base text-gray-700 mb-4">কোনো বর্ণনা পাওয়া যায়নি।</p>
-          <p id="modalProductPrice" class="text-lg font-bold text-emerald-600 mb-6"></p>
-          <button
-            id="modalOrderBtn"
-            class="button-common w-full"
-          >
-            অর্ডার নাও
-          </button>
-        </div>
-      </div>
+    <h1 class="header-title">AZAAN SUNNATI LEBAS</h1>
+    <div class="header-right">
+      <img src="logo.jpg" alt="Profile Photo" class="rounded-full border-2 border-white w-14 h-14 object-cover" />
     </div>
+  </header>
 
-    <!-- Scroll to Top Button -->
-    <button
-      onclick="scrollToTop()"
-      id="scrollTopBtn"
-      class="fixed bottom-6 right-6 z-50 bg-emerald-600 hover:bg-emerald-700 text-white p-3 rounded-full shadow-lg hidden transition duration-300"
-      aria-label="Scroll to top"
-    >
-      <svg
-        class="w-5 h-5"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
-      </svg>
+  <!-- Search Box Section -->
+  <div class="search-container">
+    <form id="searchForm" onsubmit="return handleSearch(event)" class="relative w-full max-w-xl mx-auto">
+      <input type="text" id="searchInput" placeholder="আপনি কি খুঁজছেন?" autocomplete="off"
+        class="w-full h-12 px-5 pr-12 rounded-full text-lg focus:outline-none shadow-md focus:shadow-emerald-400 transition" />
+      <span
+        class="search-icon absolute right-4 top-1/2 transform -translate-y-1/2 text-emerald-500 text-xl pointer-events-none">
+        🔍
+      </span>
+    </form>
+  </div>
+
+  <!-- Main Categories -->
+  <div id="mainCategories" class="grid-container"></div>
+
+  <!-- Subcategory Section -->
+  <section id="subcategorySection" class="hidden px-4 sm:px-6 lg:px-8">
+    <button id="backToMainBtn" class="button-common max-w-xs mb-8">
+      ← ফিরে যান
     </button>
+    <h2 id="subcategoryTitle"></h2>
+    <div id="subcategoryGrid" class="grid-container"></div>
+  </section>
 
-    <!-- FontAwesome Icon Support -->
-    <script
-      src="https://kit.fontawesome.com/a076d05399.js"
-      crossorigin="anonymous"
-    ></script>
+  <!-- Product Section -->
+  <section id="productSection" class="hidden px-4 sm:px-6 lg:px-8">
+    <button id="backToSubBtn" class="button-common max-w-xs mb-8">
+      ← ফিরে যান
+    </button>
+    <h2 id="productTitle"></h2>
+    <div id="productGrid" class="grid-container"></div>
+  </section>
 
-    <!-- Scroll Button Script -->
-    <script>
-      window.onscroll = function () {
-        const btn = document.getElementById("scrollTopBtn");
-        if (
-          document.body.scrollTop > 300 ||
-          document.documentElement.scrollTop > 300
-        ) {
-          btn.classList.remove("hidden");
-        } else {
-          btn.classList.add("hidden");
-        }
-      };
+  <!-- Search Results Section -->
+  <section id="searchResultsSection" class="hidden px-4 sm:px-6 lg:px-8">
+    <button id="backToSearchMainBtn" class="button-common max-w-xs mb-8">
+      ← ফিরে যান
+    </button>
+    <h2 id="searchResultsTitle" class="mb-6">খোঁজার ফলাফল</h2>
+    <div id="searchResultsGrid" class="grid-container"></div>
+  </section>
 
-      function scrollToTop() {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      }
-    </script>
+  <!-- Product Details Modal -->
+  <div id="productModal" class="hidden fixed inset-0 bg-black bg-opacity-60 overflow-auto z-50">
+    <div class="modal-content bg-white rounded-lg p-8 max-w-xl mx-auto mt-16 relative shadow-lg">
+      <button
+        class="modal-close absolute top-5 right-5 text-3xl font-bold text-gray-600 hover:text-black focus:outline-none"
+        id="modalCloseBtn" aria-label="Close modal">
+        &times;
+      </button>
+      <div class="modal-images text-center" id="modalImagesContainer">
+        <img id="modalMainImage" src="" alt="Product Image" class="max-w-full rounded-lg mb-4" />
+        <div class="modal-thumbs flex justify-center gap-4 flex-wrap"></div>
+      </div>
+      <div class="modal-details">
+        <h2 id="modalProductName" class="text-2xl font-semibold text-emerald-700 mb-4"></h2>
+        <p id="modalProductDescription" class="text-base text-gray-700 mb-4">কোনো বর্ণনা পাওয়া যায়নি।</p>
+        <p id="modalProductPrice" class="text-lg font-bold text-emerald-600 mb-6"></p>
+        <button id="modalOrderBtn" class="button-common w-full">
+          অর্ডার করুন
+        </button>
+      </div>
+    </div>
+  </div>
 
-    <!-- Footer -->
-    <footer class="bg-[#064e3b] text-white mt-12 px-4 sm:px-8 py-12 text-sm">
-      <div
-        class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8"
-      >
-             <!-- 1. ব্র্যান্ড পরিচিতি -->
-        <div>
-          <h2 class="text-xl font-bold mb-4">AZAAN SUNNATI LEBAS</h2>
-          <p class="leading-6 text-gray-200">
-            সুন্নতি পোশাক ও আতরের বিশ্বস্ত ঠিকানা। মানসম্মত পণ্যের মাধ্যমে
-            আপনাদের সেবা দিয়ে যাচ্ছি ইসলামী আদর্শে।
-          </p>
-        </div>
+  <!-- Scroll to Top Button -->
+  <button onclick="scrollToTop()" id="scrollTopBtn"
+    class="fixed bottom-6 right-6 z-50 bg-emerald-600 hover:bg-emerald-700 text-white p-3 rounded-full shadow-lg hidden transition duration-300"
+    aria-label="Scroll to top">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
 
-        <!-- 2. গুরুত্বপূর্ণ লিংক -->
-        <div>
-          <h3 class="text-lg font-semibold mb-4">গুরুত্বপূর্ণ লিংক</h3>
-          <ul class="space-y-2">
-            <li><a href="#" class="hover:underline">আমাদের সম্পর্কে</a></li>
-            <li><a href="#" class="hover:underline">সেবা শর্তাবলী</a></li>
-            <li><a href="#" class="hover:underline">প্রাইভেসি পলিসি</a></li>
-            <li><a href="#" class="hover:underline">ডেলিভারি ও রিটার্ন</a></li>
-          </ul>
-        </div>
 
-        <!-- 3. সাহায্য ও FAQ -->
-        <div>
-          <h3 class="text-lg font-semibold mb-4">সহায়তা</h3>
-          <ul class="space-y-2">
-            <li><a href="#" class="hover:underline">যোগাযোগ করুন</a></li>
-            <li><a href="#" class="hover:underline">সাধারণ জিজ্ঞাসা (FAQ)</a></li>
-            <li><a href="#" class="hover:underline">অর্ডার ট্র্যাক করুন</a></li>
-            <li><a href="#" class="hover:underline">রিটার্ন/রিফান্ড</a></li>
-          </ul>
-        </div>
 
-        <!-- 4. ফলো করুন + পেমেন্ট অপশন -->
-        <div>
-          <h3 class="text-lg font-semibold mb-4">ফলো করুন</h3>
-          <div class="flex gap-4 text-xl mb-4">
-            <a href="#" class="hover:text-gray-300" aria-label="Facebook"
-              ><i class="fa-brands fa-facebook-f"></i
-            ></a>
-            <a href="#" class="hover:text-gray-300" aria-label="Instagram"
-              ><i class="fa-brands fa-instagram"></i
-            ></a>
-            <a href="#" class="hover:text-gray-300" aria-label="YouTube"
-              ><i class="fa-brands fa-youtube"></i
-            ></a>
-            <a href="#" class="hover:text-gray-300" aria-label="Telegram"
-              ><i class="fa-brands fa-telegram"></i
-            ></a>
-          </div>
 
-          <!-- Payment Options -->
-          <div class="flex gap-3 items-center">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Bkash_Logo.svg"
-              alt="bKash"
-              class="h-6 bg-white p-1 rounded"
-            />
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Nagad-Logo.svg"
-              alt="Nagad"
-              class="h-6 bg-white p-1 rounded"
-            />
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png"
-              alt="Visa"
-              class="h-6 bg-white p-1 rounded"
-            />
-          </div>
-        </div>
+  <!-- Footer -->
+  <footer class="bg-[#064e3b] text-white mt-12 px-4 sm:px-8 py-12 text-sm">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <!-- 1. ব্র্যান্ড পরিচিতি -->
+      <div>
+        <h2 class="text-white font-bold mb-4"> সুন্নাতের মধ্যেই সৌন্দর্য।
+        </h2>
+        <p class="leading-6 text-gray-200">
+          আমাদের এখানে প্রিমিয়াম কোয়ালিটি আতর,সুরমা,তাসবীহ,মেসওয়াক ও কাসেমী টুপি এবং
+          বিভিন্ন ডিজাইনের পাঞ্জাবী,পায়জামা,জুব্বা,শেরওয়ানি,কাবলি,ফতুয়া, কটি, টুপি সহ সব ধরনের সুন্নাহ পোশাক অত্যন্ত
+          যত্নের সাথে তৈরি করা হয়।
+        </p>
       </div>
 
-      <!-- Newsletter Subscription -->
-      <div class="max-w-3xl mx-auto mt-10">
-        <h4 class="text-center text-lg font-semibold mb-2">
-          নতুন পণ্যের খবর পেতে সাবস্ক্রাইব করুন
-        </h4>
-        <form
-          class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-4"
-        >
-          <input
-            type="email"
-            placeholder="আপনার ইমেইল লিখুন"
-            class="w-full sm:w-2/3 px-4 py-2 rounded text-black focus:outline-none"
-            required
-          />
-          <button
-            type="submit"
-            class="bg-emerald-600 hover:bg-emerald-700 px-6 py-2 rounded text-white"
-          >
-            সাবস্ক্রাইব
-          </button>
-        </form>
+      <!-- 2. গুরুত্বপূর্ণ লিংক -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">গুরুত্বপূর্ণ লিংক</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="hover:underline">আমাদের সম্পর্কে</a></li>
+          <li><a href="#" class="hover:underline">সেবা শর্তাবলী</a></li>
+          <li><a href="#" class="hover:underline">প্রাইভেসি পলিসি</a></li>
+          <li><a href="#" class="hover:underline">ডেলিভারি ও রিটার্ন</a></li>
+        </ul>
       </div>
 
-      <!-- Language Selection -->
-      <div class="max-w-7xl mx-auto mt-8 text-center">
-        <label for="language" class="mr-2 font-medium">ভাষা:</label>
-        <select
-          id="language"
-          class="bg-white text-black px-3 py-1 rounded focus:outline-none"
-          aria-label="ভাষা নির্বাচন"
-        >
-          <option>বাংলা</option>
-          <option>English</option>
-        </select>
+      <!-- 3. সাহায্য ও FAQ -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">সহায়তা</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="hover:underline">যোগাযোগ করুন</a></li>
+          <li><a href="#" class="hover:underline">সাধারণ জিজ্ঞাসা (FAQ)</a></li>
+          <li><a href="#" class="hover:underline">অর্ডার ট্র্যাক করুন</a></li>
+          <li><a href="#" class="hover:underline">রিটার্ন/রিফান্ড</a></li>
+        </ul>
       </div>
 
-      <!-- Copyright -->
-      <div
-        class="mt-10 border-t border-[#0f766e] pt-4 text-center text-gray-300 text-xs"
-      >
-        © 2025 AZAAN SUNNATI LEBAS | সর্বস্বত্ব সংরক্ষিত | Designed with ❤️ in
-        Bangladesh
+      <!-- 4. ফলো করুন + পেমেন্ট অপশন -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">ফলো করুন</h3>
+        <div class="flex gap-4 text-xl mb-4">
+          <a href="#" class="hover:text-gray-300" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i>
+          <a href="#" class="hover:text-gray-300" aria-label="Instagram"><i class="fa-brands fa-instagram"></i>
+          <a href="#" class="hover:text-gray-300" aria-label="YouTube"><i class="fa-brands fa-youtube"></i>
+          <a href="#" class="hover:text-gray-300" aria-label="Telegram"><i class="fa-brands fa-telegram"></i>
+        </div>
+
+
       </div>
-    </footer>
+    </div>
 
 
-    <!-- FontAwesome Icon Support -->
-    <script
-      src="https://kit.fontawesome.com/a076d05399.js"
-      crossorigin="anonymous"
-    ></script>
+    <!-- Copyright -->
+    <div class="mt-10 border-t border-[#0f766e] pt-4 text-center text-gray-300 text-xs">
+      © 2025 AZAAN SUNNATI LEBAS | সর্বস্বত্ব সংরক্ষিত | Designed with ❤️ in
+      Bangladesh
+    </div>
+  </footer>
+
+
+  <!-- FontAwesome Icon Support -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
   <script>
-  let categories = [];
+    let categories = [];
 
-  // ডাটা লোড করার ফাংশন
-  async function loadCategories() {
-    try {
-      const res = await fetch('categories.json'); // path ঠিক রাখুন
-      categories = await res.json();
-      showMainCategories();
-    } catch (e) {
-      alert('ডাটা লোড করা যায়নি!');
-    }
-  }
-
-  // DOM elements
-  const mainCategoriesDiv = document.getElementById("mainCategories");
-  const subcategorySection = document.getElementById("subcategorySection");
-  const subcategoryGrid = document.getElementById("subcategoryGrid");
-  const subcategoryTitle = document.getElementById("subcategoryTitle");
-  const backToMainBtn = document.getElementById("backToMainBtn");
-
-  const productSection = document.getElementById("productSection");
-  const productGrid = document.getElementById("productGrid");
-  const productTitle = document.getElementById("productTitle");
-  const backToSubBtn = document.getElementById("backToSubBtn");
-
-  const searchResultsSection = document.getElementById("searchResultsSection");
-  const searchResultsGrid = document.getElementById("searchResultsGrid");
-  const backToSearchMainBtn = document.getElementById("backToSearchMainBtn");
-
-  // Modal elements
-  const modal = document.getElementById("productModal");
-  const modalCloseBtn = document.getElementById("modalCloseBtn");
-  const modalImagesContainer = document.getElementById("modalImagesContainer");
-  const modalProductName = document.getElementById("modalProductName");
-  const modalProductDescription = document.getElementById("modalProductDescription");
-  const modalProductPrice = document.getElementById("modalProductPrice");
-  const modalOrderBtn = document.getElementById("modalOrderBtn");
-
-  let currentProductInModal = null;
-
-  // WhatsApp নম্বর সেট করুন
-  const whatsappNumber = "8801XXXXXXXXX";
-
-  // WhatsApp অর্ডার ফাংশন
-  function openWhatsAppOrder(product) {
-    const message = encodeURIComponent(
-      `হ্যালো, আমি "${product.name}" অর্ডার দিতে চাই।\nপ্রোডাক্ট কোড: ${product.id.toUpperCase()}\nঅনুগ্রহ করে আমাকে যোগাযোগ করুন।`
-    );
-    const url = `https://wa.me/${whatsappNumber}?text=${message}`;
-    window.open(url, "_blank");
-  }
-
-  // প্রোডাক্ট modal খুলবে
-  function openProductModal(product) {
-    currentProductInModal = product;
-    const images = product.images && product.images.length ? product.images : [product.img];
-
-    modalImagesContainer.innerHTML = "";
-
-    // বড় ছবি
-    const mainImg = document.createElement("img");
-    mainImg.id = "modalMainImage";
-    mainImg.src = images[0];
-    modalImagesContainer.appendChild(mainImg);
-
-    // থাম্বনেইল গ্যালারি
-    if (images.length > 1) {
-      const thumbsContainer = document.createElement("div");
-      thumbsContainer.classList.add("modal-thumbs");
-
-      images.forEach((imgSrc, idx) => {
-        const thumb = document.createElement("img");
-        thumb.src = imgSrc;
-        if (idx === 0) thumb.classList.add("selected");
-
-        thumb.onclick = () => {
-          mainImg.src = imgSrc;
-          thumbsContainer.querySelectorAll("img").forEach((i) => i.classList.remove("selected"));
-          thumb.classList.add("selected");
-        };
-
-        thumbsContainer.appendChild(thumb);
-      });
-
-      modalImagesContainer.appendChild(thumbsContainer);
+    // ডাটা লোড করার ফাংশন
+    async function loadCategories() {
+      try {
+        const res = await fetch('categories.json'); // path ঠিক রাখুন
+        categories = await res.json();
+        showMainCategories();
+      } catch (e) {
+        alert('ডাটা লোড করা যায়নি!');
+      }
     }
 
-    modalProductName.textContent = product.name;
-    modalProductDescription.textContent = product.description || "কোনো বর্ণনা পাওয়া যায়নি।";
-    modalProductPrice.textContent = `মূল্য: ${product.price}`;
+    // DOM elements
+    const mainCategoriesDiv = document.getElementById("mainCategories");
+    const subcategorySection = document.getElementById("subcategorySection");
+    const subcategoryGrid = document.getElementById("subcategoryGrid");
+    const subcategoryTitle = document.getElementById("subcategoryTitle");
+    const backToMainBtn = document.getElementById("backToMainBtn");
 
-    modal.classList.remove("hidden");
-    modal.style.display = "block";
-  }
+    const productSection = document.getElementById("productSection");
+    const productGrid = document.getElementById("productGrid");
+    const productTitle = document.getElementById("productTitle");
+    const backToSubBtn = document.getElementById("backToSubBtn");
 
-  // Modal বন্ধ
-  modalCloseBtn.onclick = () => {
-    modal.classList.add("hidden");
-    modal.style.display = "none";
-  };
-  window.onclick = (e) => {
-    if (e.target === modal) {
+    const searchResultsSection = document.getElementById("searchResultsSection");
+    const searchResultsGrid = document.getElementById("searchResultsGrid");
+    const backToSearchMainBtn = document.getElementById("backToSearchMainBtn");
+
+    // Modal elements
+    const modal = document.getElementById("productModal");
+    const modalCloseBtn = document.getElementById("modalCloseBtn");
+    const modalImagesContainer = document.getElementById("modalImagesContainer");
+    const modalProductName = document.getElementById("modalProductName");
+    const modalProductDescription = document.getElementById("modalProductDescription");
+    const modalProductPrice = document.getElementById("modalProductPrice");
+    const modalOrderBtn = document.getElementById("modalOrderBtn");
+
+    let currentProductInModal = null;
+
+    // WhatsApp নম্বর সেট করুন
+    const whatsappNumber = "8801995845496"; // আপনার WhatsApp নম্বর এখানে দিন
+
+    // WhatsApp অর্ডার ফাংশন
+    function openWhatsAppOrder(product) {
+      const message = encodeURIComponent(
+        `হ্যালো, আমি "${product.name}" অর্ডার দিতে চাই।\nপ্রোডাক্ট কোড: ${product.id.toUpperCase()}\nঅনুগ্রহ করে আমাকে যোগাযোগ করুন।`
+      );
+      const url = `https://wa.me/${whatsappNumber}?text=${message}`;
+      window.open(url, "_blank");
+    }
+
+    // প্রোডাক্ট modal খুলবে
+    function openProductModal(product) {
+      currentProductInModal = product;
+      const images = product.images && product.images.length ? product.images : [product.img];
+
+      modalImagesContainer.innerHTML = "";
+
+      // বড় ছবি
+      const mainImg = document.createElement("img");
+      mainImg.id = "modalMainImage";
+      mainImg.src = images[0];
+      modalImagesContainer.appendChild(mainImg);
+
+      // থাম্বনেইল গ্যালারি
+      if (images.length > 1) {
+        const thumbsContainer = document.createElement("div");
+        thumbsContainer.classList.add("modal-thumbs");
+
+        images.forEach((imgSrc, idx) => {
+          const thumb = document.createElement("img");
+          thumb.src = imgSrc;
+          if (idx === 0) thumb.classList.add("selected");
+
+          thumb.onclick = () => {
+            mainImg.src = imgSrc;
+            thumbsContainer.querySelectorAll("img").forEach((i) => i.classList.remove("selected"));
+            thumb.classList.add("selected");
+          };
+
+          thumbsContainer.appendChild(thumb);
+        });
+
+        modalImagesContainer.appendChild(thumbsContainer);
+      }
+
+      modalProductName.textContent = product.name;
+      modalProductDescription.textContent = product.description || "কোনো বর্ণনা পাওয়া যায়নি।";
+      modalProductPrice.textContent = `মূল্য: ${product.price}`;
+
+      modal.classList.remove("hidden");
+      modal.style.display = "block";
+    }
+
+    // Modal বন্ধ
+    modalCloseBtn.onclick = () => {
       modal.classList.add("hidden");
       modal.style.display = "none";
-    }
-  };
+    };
+    window.onclick = (e) => {
+      if (e.target === modal) {
+        modal.classList.add("hidden");
+        modal.style.display = "none";
+      }
+    };
 
-  // modal অর্ডার বাটন
-  modalOrderBtn.onclick = () => {
-    if (!currentProductInModal) return;
-    openWhatsAppOrder(currentProductInModal);
-  };
+    // modal অর্ডার বাটন
+    modalOrderBtn.onclick = () => {
+      if (!currentProductInModal) return;
+      openWhatsAppOrder(currentProductInModal);
+    };
 
-  // প্রোডাক্ট কার্ড দেখাবে সাবক্যাটাগরির জন্য
-  function showProducts(catId, subcatId) {
-    const cat = categories.find((c) => c.id === catId);
-    if (!cat) return;
-    const subcat = cat.subcategories.find((s) => s.id === subcatId);
-    if (!subcat) return;
+    // প্রোডাক্ট কার্ড দেখাবে সাবক্যাটাগরির জন্য
+    function showProducts(catId, subcatId) {
+      const cat = categories.find((c) => c.id === catId);
+      if (!cat) return;
+      const subcat = cat.subcategories.find((s) => s.id === subcatId);
+      if (!subcat) return;
 
-    productTitle.textContent = `${subcat.name} এর প্রোডাক্টসমূহ`;
+      productTitle.textContent = `${subcat.name} এর প্রোডাক্টসমূহ`;
 
-    productGrid.innerHTML = "";
-    subcat.products.forEach((prod) => {
-      const prodDiv = document.createElement("div");
-      prodDiv.classList.add("item-card");
-      prodDiv.innerHTML = `
+      productGrid.innerHTML = "";
+      subcat.products.forEach((prod) => {
+        const prodDiv = document.createElement("div");
+        prodDiv.classList.add("item-card");
+        prodDiv.innerHTML = `
         <img src="${prod.img}" alt="${prod.name}">
         <h3>${prod.name}</h3>
         <p>মূল্য: ${prod.price}</p>
         <button class="button-common details-btn">বিস্তারিত জানুন</button>
       `;
-      prodDiv.querySelector(".details-btn").onclick = (e) => {
-        e.stopPropagation();
-        openProductModal(prod);
-      };
-      productGrid.appendChild(prodDiv);
-    });
+        prodDiv.querySelector(".details-btn").onclick = (e) => {
+          e.stopPropagation();
+          openProductModal(prod);
+        };
+        productGrid.appendChild(prodDiv);
+      });
 
-    mainCategoriesDiv.style.display = "none";
-    subcategorySection.style.display = "none";
-    productSection.style.display = "block";
-    searchResultsSection.style.display = "none";
-  }
+      mainCategoriesDiv.style.display = "none";
+      subcategorySection.style.display = "none";
+      productSection.style.display = "block";
+      searchResultsSection.style.display = "none";
+    }
 
-  // সাবক্যাটাগরি দেখাবে
-  function showSubcategories(catId) {
-    const cat = categories.find((c) => c.id === catId);
-    if (!cat) return;
+    // সাবক্যাটাগরি দেখাবে
+    function showSubcategories(catId) {
+      const cat = categories.find((c) => c.id === catId);
+      if (!cat) return;
 
-    subcategoryTitle.textContent = cat.name + " এর সাবক্যাটাগরি";
+      subcategoryTitle.textContent = cat.name + " এর সাবক্যাটাগরি";
 
-    subcategoryGrid.innerHTML = "";
-    cat.subcategories.forEach((subcat) => {
-      const subcatDiv = document.createElement("div");
-      subcatDiv.classList.add("item-card");
-      subcatDiv.innerHTML = `
+      subcategoryGrid.innerHTML = "";
+      cat.subcategories.forEach((subcat) => {
+        const subcatDiv = document.createElement("div");
+        subcatDiv.classList.add("item-card");
+        subcatDiv.innerHTML = `
         <img src="${subcat.img}" alt="${subcat.name}">
         <h3>${subcat.name}</h3>
         <p>প্রোডাক্ট সংখ্যা: ${subcat.productCount}</p>
       `;
-      subcatDiv.onclick = () => {
-        showProducts(catId, subcat.id);
-      };
-      subcategoryGrid.appendChild(subcatDiv);
-    });
+        subcatDiv.onclick = () => {
+          showProducts(catId, subcat.id);
+        };
+        subcategoryGrid.appendChild(subcatDiv);
+      });
 
-    mainCategoriesDiv.style.display = "none";
-    subcategorySection.style.display = "block";
-    productSection.style.display = "none";
-    searchResultsSection.style.display = "none";
-  }
+      mainCategoriesDiv.style.display = "none";
+      subcategorySection.style.display = "block";
+      productSection.style.display = "none";
+      searchResultsSection.style.display = "none";
+    }
 
-  // মেইন ক্যাটাগরি দেখাবে
-  function showMainCategories() {
-    mainCategoriesDiv.innerHTML = "";
-    categories.forEach((cat) => {
-      const catDiv = document.createElement("div");
-      catDiv.classList.add("item-card");
-      catDiv.innerHTML = `
+    // মেইন ক্যাটাগরি দেখাবে
+    function showMainCategories() {
+      mainCategoriesDiv.innerHTML = "";
+      categories.forEach((cat) => {
+        const catDiv = document.createElement("div");
+        catDiv.classList.add("item-card");
+        catDiv.innerHTML = `
         <img src="${cat.img}" alt="${cat.name}">
         <h3>${cat.name}</h3>
         <p>সাবক্যাটাগরি: ${cat.subcategories.length}</p>
         <p>প্রোডাক্ট সংখ্যা: ${cat.productCount}</p>
       `;
-      catDiv.onclick = () => {
-        showSubcategories(cat.id);
-      };
-      mainCategoriesDiv.appendChild(catDiv);
-    });
+        catDiv.onclick = () => {
+          showSubcategories(cat.id);
+        };
+        mainCategoriesDiv.appendChild(catDiv);
+      });
 
-    mainCategoriesDiv.style.display = "grid";
-    subcategorySection.style.display = "none";
-    productSection.style.display = "none";
-    searchResultsSection.style.display = "none";
-  }
-
-  // বাটন - ফিরে যাওয়া
-  backToMainBtn.onclick = () => {
-    showMainCategories();
-  };
-  backToSubBtn.onclick = () => {
-    subcategorySection.style.display = "block";
-    productSection.style.display = "none";
-    searchResultsSection.style.display = "none";
-  };
-  backToSearchMainBtn.onclick = () => {
-    searchResultsSection.style.display = "none";
-    mainCategoriesDiv.style.display = "grid";
-  };
-
-  // সার্চ ফাংশন
-  function handleSearch(event) {
-    event.preventDefault();
-    const query = document.getElementById("searchInput").value.trim().toLowerCase();
-    if (!query) {
-      alert("অনুগ্রহ করে খোঁজার জন্য কিছু লিখুন।");
-      return false;
+      mainCategoriesDiv.style.display = "grid";
+      subcategorySection.style.display = "none";
+      productSection.style.display = "none";
+      searchResultsSection.style.display = "none";
     }
 
-    const matchedProducts = [];
+    // বাটন - ফিরে যাওয়া
+    backToMainBtn.onclick = () => {
+      showMainCategories();
+    };
+    backToSubBtn.onclick = () => {
+      subcategorySection.style.display = "block";
+      productSection.style.display = "none";
+      searchResultsSection.style.display = "none";
+    };
+    backToSearchMainBtn.onclick = () => {
+      searchResultsSection.style.display = "none";
+      mainCategoriesDiv.style.display = "grid";
+    };
 
-    categories.forEach((cat) => {
-      cat.subcategories.forEach((subcat) => {
-        subcat.products.forEach((prod) => {
-          if (
-            prod.name.toLowerCase().includes(query) ||
-            cat.name.toLowerCase().includes(query) ||
-            subcat.name.toLowerCase().includes(query)
-          ) {
-            matchedProducts.push(prod);
-          }
+    // সার্চ ফাংশন
+    function handleSearch(event) {
+      event.preventDefault();
+      const query = document.getElementById("searchInput").value.trim().toLowerCase();
+      if (!query) {
+        alert("অনুগ্রহ করে খোঁজার জন্য কিছু লিখুন।");
+        return false;
+      }
+
+      const matchedProducts = [];
+
+      categories.forEach((cat) => {
+        cat.subcategories.forEach((subcat) => {
+          subcat.products.forEach((prod) => {
+            if (
+              prod.name.toLowerCase().includes(query) ||
+              cat.name.toLowerCase().includes(query) ||
+              subcat.name.toLowerCase().includes(query)
+            ) {
+              matchedProducts.push(prod);
+            }
+          });
         });
       });
-    });
 
-    if (matchedProducts.length === 0) {
-      alert("কোনো প্রোডাক্ট পাওয়া যায়নি।");
-      return false;
-    }
+      if (matchedProducts.length === 0) {
+        alert("কোনো প্রোডাক্ট পাওয়া যায়নি।");
+        return false;
+      }
 
-    searchResultsGrid.innerHTML = "";
-    matchedProducts.forEach((prod) => {
-      const prodDiv = document.createElement("div");
-      prodDiv.classList.add("item-card");
-      prodDiv.innerHTML = `
+      searchResultsGrid.innerHTML = "";
+      matchedProducts.forEach((prod) => {
+        const prodDiv = document.createElement("div");
+        prodDiv.classList.add("item-card");
+        prodDiv.innerHTML = `
         <img src="${prod.img}" alt="${prod.name}">
         <h3>${prod.name}</h3>
         <p>মূল্য: ${prod.price}</p>
         <button class="button-common details-btn">বিস্তারিত জানুন</button>
       `;
-      prodDiv.querySelector(".details-btn").onclick = (e) => {
-        e.stopPropagation();
-        openProductModal(prod);
-      };
-      searchResultsGrid.appendChild(prodDiv);
-    });
+        prodDiv.querySelector(".details-btn").onclick = (e) => {
+          e.stopPropagation();
+          openProductModal(prod);
+        };
+        searchResultsGrid.appendChild(prodDiv);
+      });
 
-    mainCategoriesDiv.style.display = "none";
-    subcategorySection.style.display = "none";
-    productSection.style.display = "none";
-    searchResultsSection.style.display = "block";
+      mainCategoriesDiv.style.display = "none";
+      subcategorySection.style.display = "none";
+      productSection.style.display = "none";
+      searchResultsSection.style.display = "block";
 
-    return false;
-  }
-
-  // প্রথমে ডাটা লোড করো
-  loadCategories();
-
-  // Scroll to top button
-  window.addEventListener("scroll", function () {
-    const btn = document.getElementById("scrollTopBtn");
-    if (window.scrollY > 300) {
-      btn.classList.remove("hidden");
-    } else {
-      btn.classList.add("hidden");
+      return false;
     }
-  });
 
-  function scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
+    // প্রথমে ডাটা লোড করো
+    loadCategories();
+
+    // Scroll to top button
+    window.addEventListener("scroll", function () {
+      const btn = document.getElementById("scrollTopBtn");
+      if (window.scrollY > 300) {
+        btn.classList.remove("hidden");
+      } else {
+        btn.classList.add("hidden");
+      }
     });
-  }
-</script>
-  </body>
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  </script>
+</body>
+
 </html>
