@@ -2,88 +2,55 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8" />
-  <title>AZAAN Admin Panel</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+  <title>Admin Panel - Azaan</title>
 </head>
-<body class="bg-gray-100 p-6 font-sans">
+<body>
+  <h2>নতুন প্রোডাক্ট যুক্ত করুন</h2>
+  <input type="text" id="name" placeholder="নাম" />
+  <input type="text" id="price" placeholder="মূল্য" />
+  <input type="text" id="img" placeholder="ইমেজ URL" />
+  <button onclick="addProduct()">✅ যোগ করুন</button>
 
-  <h1 class="text-2xl font-bold text-green-700 mb-6 text-center">AZAAN SUNNATI LEBAS Admin Panel</h1>
+  <h2>সকল প্রোডাক্ট</h2>
+  <ul id="productList"></ul>
 
-  <form id="productForm" class="bg-white p-6 rounded shadow-md max-w-xl mx-auto space-y-4">
-    <input type="text" id="category" placeholder="ক্যাটাগরি (যেমনঃ পাঞ্জাবি)" class="w-full border p-2 rounded" required />
-    <input type="text" id="subcategory" placeholder="সাব-ক্যাটাগরি (যেমনঃ লিনেন)" class="w-full border p-2 rounded" required />
-    <input type="text" id="name" placeholder="প্রোডাক্ট নাম" class="w-full border p-2 rounded" required />
-    <input type="text" id="price" placeholder="মূল্য (যেমনঃ ৭৫০৳)" class="w-full border p-2 rounded" required />
-    <textarea id="description" placeholder="বর্ণনা" class="w-full border p-2 rounded"></textarea>
-    <input type="file" id="image" accept="image/*" class="w-full border p-2 rounded bg-white" required />
-    <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded w-full">প্রোডাক্ট যুক্ত করুন</button>
-  </form>
+  <script type="module">
+    import { db, collection, addDoc, deleteDoc, doc, getDocs } from './firebase.js';
 
-  <div id="message" class="text-center text-green-600 mt-4 font-semibold"></div>
+    const productsRef = collection(db, "products");
 
-  <script>
-    // Firebase config
-    const firebaseConfig = {
-      apiKey: "AIzaSyC9oDupW2atBfT_Y2TylOjm3dKhG1PpkJY",
-      authDomain: "azaansunatilebas.firebaseapp.com",
-      projectId: "azaansunatilebas",
-      storageBucket: "azaansunatilebas.appspot.com",
-      messagingSenderId: "854978097747",
-      appId: "1:854978097747:web:3ae3d004d5df2568858ca6",
-      measurementId: "G-WF027GFB8B"
-    };
+    async function addProduct() {
+      const name = document.getElementById("name").value;
+      const price = document.getElementById("price").value;
+      const img = document.getElementById("img").value;
 
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-    const storage = firebase.storage();
+      await addDoc(productsRef, { name, price, img });
+      loadProducts();
+    }
 
-    const form = document.getElementById("productForm");
-    const messageDiv = document.getElementById("message");
+    async function deleteProduct(id) {
+      await deleteDoc(doc(db, "products", id));
+      loadProducts();
+    }
 
-    form.onsubmit = async (e) => {
-      e.preventDefault();
+    async function loadProducts() {
+      const list = document.getElementById("productList");
+      list.innerHTML = "";
 
-      const category = form.category.value.trim();
-      const subcategory = form.subcategory.value.trim();
-      const name = form.name.value.trim();
-      const price = form.price.value.trim();
-      const description = form.description.value.trim();
-      const file = form.image.files[0];
+      const snapshot = await getDocs(productsRef);
+      snapshot.forEach(docSnap => {
+        const data = docSnap.data();
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <img src="${data.img}" width="50" /> ${data.name} - ${data.price}
+          <button onclick="deleteProduct('${docSnap.id}')">❌</button>
+        `;
+        list.appendChild(li);
+      });
+    }
 
-      if (!file) {
-        alert("ছবি দিন");
-        return;
-      }
-
-      // Storage path: category/subcategory/productname_timestamp.jpg
-      const imageRef = storage.ref(`${category}/${subcategory}/${Date.now()}_${file.name}`);
-      await imageRef.put(file);
-      const imageUrl = await imageRef.getDownloadURL();
-
-      const product = {
-        name,
-        price,
-        description,
-        img: imageUrl,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp()
-      };
-
-      // Firestore path: categories > category > subcategories > subcategory > products
-      await db
-        .collection("categories")
-        .doc(category)
-        .collection("subcategories")
-        .doc(subcategory)
-        .collection("products")
-        .add(product);
-
-      messageDiv.innerText = "✅ সফলভাবে যুক্ত হয়েছে!";
-      form.reset();
-    };
+    window.deleteProduct = deleteProduct;
+    loadProducts();
   </script>
 </body>
 </html>
