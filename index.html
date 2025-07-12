@@ -667,7 +667,29 @@
 
   <!-- FontAwesome Icon Support -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script type="module">
+    import { db, collection, getDocs } from './firebase.js';
 
+    const productGrid = document.getElementById("productGrid");
+    const productsRef = collection(db, "products");
+
+    async function loadProducts() {
+      const snapshot = await getDocs(productsRef);
+      snapshot.forEach(docSnap => {
+        const data = docSnap.data();
+        const div = document.createElement("div");
+        div.innerHTML = `
+          <img src="${data.img}" width="100" /><br>
+          <strong>${data.name}</strong><br>
+          <span>মূল্য: ${data.price}</span><br><br>
+        `;
+        productGrid.appendChild(div);
+      });
+    }
+
+    loadProducts();
+  </script>
+    
   <script>
     let categories = [];
 
