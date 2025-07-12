@@ -1,67 +1,411 @@
 <!DOCTYPE html>
 <html lang="bn">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Admin Panel</title>
+  <meta charset="UTF-8" />
+  <title>🔥 প্রোডাক্ট ম্যানেজমেন্ট (Admin Panel)</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: #f9fafb;
+      color: #111;
+    }
+
+    h2 {
+      color: #059669;
+      margin-bottom: 1rem;
+    }
+
+    input,
+    select {
+      padding: 8px;
+      margin: 0.2rem 0.5rem 0.8rem 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      width: 180px;
+    }
+
+    button {
+      cursor: pointer;
+      background: #10b981;
+      border: none;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 5px;
+      margin-left: 5px;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #059669;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    li {
+      background: white;
+      padding: 8px 12px;
+      margin-bottom: 6px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+    }
+
+    li > div {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    img {
+      max-width: 50px;
+      border-radius: 4px;
+      object-fit: cover;
+    }
+
+    .edit-input {
+      padding: 5px;
+      font-size: 0.9rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      width: 120px;
+    }
+
+    .logout-btn {
+      background: #ef4444;
+      margin-bottom: 1rem;
+    }
+
+    .logout-btn:hover {
+      background: #b91c1c;
+    }
+  </style>
 </head>
+
 <body>
-  <h2>🔥 প্রোডাক্ট ম্যানেজমেন্ট (শুধু এডমিন)</h2>
-  <button onclick="logout()">🚪 লগআউট</button><br><br>
+  <h2>🔥 Admin Panel - Category, Subcategory & Product Management</h2>
+  <button class="logout-btn" onclick="logout()">🚪 লগআউট</button>
 
-  <input type="text" id="name" placeholder="নাম">
-  <input type="text" id="price" placeholder="মূল্য">
-  <input type="text" id="img" placeholder="ইমেজ URL">
-  <button onclick="addProduct()">➕ যুক্ত করুন</button>
+  <hr>
 
-  <ul id="productList"></ul>
+  <h3>ক্যাটাগরি যোগ করুন</h3>
+  <input type="text" id="categoryName" placeholder="ক্যাটাগরির নাম" />
+  <button onclick="addCategory()">➕ যোগ করুন</button>
+
+  <h3>সাব-ক্যাটাগরি যোগ করুন</h3>
+  <select id="selectCategoryForSubcat">
+    <option value="">-- ক্যাটাগরি নির্বাচন করুন --</option>
+  </select><br>
+  <input type="text" id="subCategoryName" placeholder="সাব-ক্যাটাগরির নাম" />
+  <button onclick="addSubCategory()">➕ যোগ করুন</button>
+
+  <h3>প্রোডাক্ট যোগ করুন</h3>
+  <select id="selectCategoryForProduct">
+    <option value="">-- ক্যাটাগরি নির্বাচন করুন --</option>
+  </select>
+  <select id="selectSubCategoryForProduct">
+    <option value="">-- সাব-ক্যাটাগরি নির্বাচন করুন --</option>
+  </select><br>
+  <input type="text" id="productName" placeholder="প্রোডাক্ট নাম" />
+  <input type="text" id="productPrice" placeholder="মূল্য" />
+  <input type="text" id="productImage" placeholder="ইমেজ URL" />
+  <button onclick="addProduct()">➕ যোগ করুন</button>
+
+  <hr>
+
+  <h3>ক্যাটাগরিসমূহ</h3>
+  <ul id="categoryList"></ul>
 
   <script type="module">
-    import { auth, onAuthStateChanged, signOut, db, collection, addDoc, deleteDoc, doc, getDocs } from './firebase.js';
+    import {
+      auth,
+      onAuthStateChanged,
+      signOut,
+      db,
+      collection,
+      addDoc,
+      deleteDoc,
+      doc,
+      getDocs,
+      updateDoc,
+      query,
+      where,
+      orderBy
+    } from './firebase.js';
 
+    // Refs for collections
+    const categoriesRef = collection(db, "categories");
+    const subcategoriesRef = collection(db, "subcategories");
     const productsRef = collection(db, "products");
 
+    // Authentication check
     onAuthStateChanged(auth, (user) => {
       if (!user) {
         window.location.href = "login.html"; // Redirect if not logged in
       } else {
-        loadProducts();
+        loadCategories();
+        populateCategorySelectors();
       }
     });
 
+    // Logout
     window.logout = async function () {
       await signOut(auth);
       window.location.href = "login.html";
     };
 
+    // Add Category
+    window.addCategory = async function () {
+      const name = document.getElementById("categoryName").value.trim();
+      if (!name) return alert("অনুগ্রহ করে ক্যাটাগরির নাম লিখুন।");
+      await addDoc(categoriesRef, { name });
+      document.getElementById("categoryName").value = "";
+      await loadCategories();
+      await populateCategorySelectors();
+    };
+
+    // Add Subcategory
+    window.addSubCategory = async function () {
+      const name = document.getElementById("subCategoryName").value.trim();
+      const categoryId = document.getElementById("selectCategoryForSubcat").value;
+      if (!categoryId) return alert("অনুগ্রহ করে ক্যাটাগরি নির্বাচন করুন।");
+      if (!name) return alert("অনুগ্রহ করে সাব-ক্যাটাগরির নাম লিখুন।");
+      await addDoc(subcategoriesRef, { name, categoryId });
+      document.getElementById("subCategoryName").value = "";
+      await loadCategories();
+    };
+
+    // Add Product
     window.addProduct = async function () {
-      const name = document.getElementById("name").value;
-      const price = document.getElementById("price").value;
-      const img = document.getElementById("img").value;
+      const name = document.getElementById("productName").value.trim();
+      const price = document.getElementById("productPrice").value.trim();
+      const img = document.getElementById("productImage").value.trim();
+      const categoryId = document.getElementById("selectCategoryForProduct").value;
+      const subCategoryId = document.getElementById("selectSubCategoryForProduct").value;
 
-      await addDoc(productsRef, { name, price, img });
-      loadProducts();
+      if (!categoryId) return alert("অনুগ্রহ করে ক্যাটাগরি নির্বাচন করুন।");
+      if (!subCategoryId) return alert("অনুগ্রহ করে সাব-ক্যাটাগরি নির্বাচন করুন।");
+      if (!name) return alert("অনুগ্রহ করে প্রোডাক্টের নাম লিখুন।");
+      if (!price) return alert("অনুগ্রহ করে প্রোডাক্টের মূল্য লিখুন।");
+
+      await addDoc(productsRef, { name, price, img, categoryId, subCategoryId });
+      document.getElementById("productName").value = "";
+      document.getElementById("productPrice").value = "";
+      document.getElementById("productImage").value = "";
+      await loadCategories();
     };
 
-    window.deleteProduct = async function (id) {
-      await deleteDoc(doc(db, "products", id));
-      loadProducts();
-    };
+    // Load categories, subcategories & products in list view
+    async function loadCategories() {
+      const categoryList = document.getElementById("categoryList");
+      categoryList.innerHTML = "";
 
-    async function loadProducts() {
-      const list = document.getElementById("productList");
-      list.innerHTML = "";
+      const categoriesSnapshot = await getDocs(categoriesRef);
+      for (const catDoc of categoriesSnapshot.docs) {
+        const catData = catDoc.data();
 
-      const snapshot = await getDocs(productsRef);
-      snapshot.forEach(docSnap => {
-        const data = docSnap.data();
+        // Create li for category
         const li = document.createElement("li");
-        li.innerHTML = `
-          <img src="${data.img}" width="50" /> ${data.name} - ${data.price}
-          <button onclick="deleteProduct('${docSnap.id}')">❌</button>
-        `;
-        list.appendChild(li);
-      });
+
+        // Editable category name
+        const categoryNameInput = document.createElement("input");
+        categoryNameInput.value = catData.name;
+        categoryNameInput.classList.add("edit-input");
+        categoryNameInput.onchange = async () => {
+          await updateDoc(doc(db, "categories", catDoc.id), { name: categoryNameInput.value });
+          await loadCategories();
+          await populateCategorySelectors();
+        };
+
+        // Delete category button
+        const deleteCatBtn = document.createElement("button");
+        deleteCatBtn.textContent = "❌ ক্যাটাগরি মুছুন";
+        deleteCatBtn.style.background = "#ef4444";
+        deleteCatBtn.onclick = async () => {
+          // সাব-ক্যাটাগরি এবং প্রোডাক্ট ডিলিট করো আগে (cascade delete)
+          await deleteSubcategoriesByCategory(catDoc.id);
+          await deleteProductsByCategory(catDoc.id);
+          await deleteDoc(doc(db, "categories", catDoc.id));
+          await loadCategories();
+          await populateCategorySelectors();
+        };
+
+        // Load subcategories for this category
+        const subcatUl = document.createElement("ul");
+        subcatUl.style.marginLeft = "1.5rem";
+
+        const subcatQuery = query(subcategoriesRef, where("categoryId", "==", catDoc.id), orderBy("name"));
+        const subcatSnapshot = await getDocs(subcatQuery);
+
+        for (const subcatDoc of subcatSnapshot.docs) {
+          const subcatData = subcatDoc.data();
+
+          const subcatLi = document.createElement("li");
+
+          // Editable subcategory name
+          const subcatNameInput = document.createElement("input");
+          subcatNameInput.value = subcatData.name;
+          subcatNameInput.classList.add("edit-input");
+          subcatNameInput.onchange = async () => {
+            await updateDoc(doc(db, "subcategories", subcatDoc.id), { name: subcatNameInput.value });
+            await loadCategories();
+          };
+
+          // Delete subcategory button
+          const deleteSubcatBtn = document.createElement("button");
+          deleteSubcatBtn.textContent = "❌ সাব-ক্যাটাগরি মুছুন";
+          deleteSubcatBtn.style.background = "#dc2626";
+          deleteSubcatBtn.onclick = async () => {
+            await deleteProductsBySubcategory(subcatDoc.id);
+            await deleteDoc(doc(db, "subcategories", subcatDoc.id));
+            await loadCategories();
+          };
+
+          // Load products for this subcategory
+          const prodUl = document.createElement("ul");
+          prodUl.style.marginLeft = "1.5rem";
+
+          const prodQuery = query(productsRef, where("subCategoryId", "==", subcatDoc.id), orderBy("name"));
+          const prodSnapshot = await getDocs(prodQuery);
+
+          for (const prodDoc of prodSnapshot.docs) {
+            const prodData = prodDoc.data();
+
+            const prodLi = document.createElement("li");
+
+            // Editable product fields
+            const prodNameInput = document.createElement("input");
+            prodNameInput.value = prodData.name;
+            prodNameInput.classList.add("edit-input");
+
+            const prodPriceInput = document.createElement("input");
+            prodPriceInput.value = prodData.price;
+            prodPriceInput.classList.add("edit-input");
+            prodPriceInput.style.width = "70px";
+
+            const prodImgInput = document.createElement("input");
+            prodImgInput.value = prodData.img;
+            prodImgInput.classList.add("edit-input");
+            prodImgInput.style.width = "150px";
+
+            // Update on change
+            prodNameInput.onchange = prodPriceInput.onchange = prodImgInput.onchange = async () => {
+              await updateDoc(doc(db, "products", prodDoc.id), {
+                name: prodNameInput.value,
+                price: prodPriceInput.value,
+                img: prodImgInput.value
+              });
+              await loadCategories();
+            };
+
+            // Delete product button
+            const deleteProdBtn = document.createElement("button");
+            deleteProdBtn.textContent = "❌ প্রোডাক্ট মুছুন";
+            deleteProdBtn.style.background = "#b91c1c";
+            deleteProdBtn.onclick = async () => {
+              await deleteDoc(doc(db, "products", prodDoc.id));
+              await loadCategories();
+            };
+
+            // Product display div
+            const prodDiv = document.createElement("div");
+            prodDiv.appendChild(prodNameInput);
+            prodDiv.appendChild(prodPriceInput);
+            prodDiv.appendChild(prodImgInput);
+            prodDiv.appendChild(deleteProdBtn);
+
+            prodLi.appendChild(prodDiv);
+            prodUl.appendChild(prodLi);
+          }
+
+          subcatLi.appendChild(subcatNameInput);
+          subcatLi.appendChild(deleteSubcatBtn);
+          subcatLi.appendChild(prodUl);
+          subcatUl.appendChild(subcatLi);
+        }
+
+        li.appendChild(categoryNameInput);
+        li.appendChild(deleteCatBtn);
+        li.appendChild(subcatUl);
+        categoryList.appendChild(li);
+      }
+    }
+
+    // Delete cascade functions
+    async function deleteSubcategoriesByCategory(categoryId) {
+      const subcatQuery = query(subcategoriesRef, where("categoryId", "==", categoryId));
+      const subcats = await getDocs(subcatQuery);
+      for (const subcatDoc of subcats.docs) {
+        await deleteProductsBySubcategory(subcatDoc.id);
+        await deleteDoc(doc(db, "subcategories", subcatDoc.id));
+      }
+    }
+
+    async function deleteProductsByCategory(categoryId) {
+      const prodQuery = query(productsRef, where("categoryId", "==", categoryId));
+      const prods = await getDocs(prodQuery);
+      for (const prodDoc of prods.docs) {
+        await deleteDoc(doc(db, "products", prodDoc.id));
+      }
+    }
+
+    async function deleteProductsBySubcategory(subCategoryId) {
+      const prodQuery = query(productsRef, where("subCategoryId", "==", subCategoryId));
+      const prods = await getDocs(prodQuery);
+      for (const prodDoc of prods.docs) {
+        await deleteDoc(doc(db, "products", prodDoc.id));
+      }
+    }
+
+    // Populate category selectors for subcategory and product inputs
+    async function populateCategorySelectors() {
+      const selectSubcat = document.getElementById("selectCategoryForSubcat");
+      const selectProdCat = document.getElementById("selectCategoryForProduct");
+      selectSubcat.innerHTML = `<option value="">-- ক্যাটাগরি নির্বাচন করুন --</option>`;
+      selectProdCat.innerHTML = `<option value="">-- ক্যাটাগরি নির্বাচন করুন --</option>`;
+
+      const categoriesSnapshot = await getDocs(categoriesRef);
+      for (const catDoc of categoriesSnapshot.docs) {
+        const option = document.createElement("option");
+        option.value = catDoc.id;
+        option.textContent = catDoc.data().name;
+
+        selectSubcat.appendChild(option.cloneNode(true));
+        selectProdCat.appendChild(option);
+      }
+      updateSubCategoryOptions();
+    }
+
+    // Update Subcategory dropdown based on selected Category (product section)
+    document.getElementById("selectCategoryForProduct").addEventListener("change", updateSubCategoryOptions);
+
+    async function updateSubCategoryOptions() {
+      const categoryId = document.getElementById("selectCategoryForProduct").value;
+      const selectSubCategory = document.getElementById("selectSubCategoryForProduct");
+      selectSubCategory.innerHTML = `<option value="">-- সাব-ক্যাটাগরি নির্বাচন করুন --</option>`;
+
+      if (!categoryId) return;
+
+      const subcatQuery = query(subcategoriesRef, where("categoryId", "==", categoryId), orderBy("name"));
+      const subcatsSnapshot = await getDocs(subcatQuery);
+
+      for (const subcatDoc of subcatsSnapshot.docs) {
+        const option = document.createElement("option");
+        option.value = subcatDoc.id;
+        option.textContent = subcatDoc.data().name;
+        selectSubCategory.appendChild(option);
+      }
     }
   </script>
 </body>
+
 </html>
