@@ -1,37 +1,51 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8" />
-  <title>Admin Panel - Azaan</title>
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
 </head>
 <body>
-  <h2>নতুন প্রোডাক্ট যুক্ত করুন</h2>
-  <input type="text" id="name" placeholder="নাম" />
-  <input type="text" id="price" placeholder="মূল্য" />
-  <input type="text" id="img" placeholder="ইমেজ URL" />
-  <button onclick="addProduct()">✅ যোগ করুন</button>
+  <h2>🔥 প্রোডাক্ট ম্যানেজমেন্ট (শুধু এডমিন)</h2>
+  <button onclick="logout()">🚪 লগআউট</button><br><br>
 
-  <h2>সকল প্রোডাক্ট</h2>
+  <input type="text" id="name" placeholder="নাম">
+  <input type="text" id="price" placeholder="মূল্য">
+  <input type="text" id="img" placeholder="ইমেজ URL">
+  <button onclick="addProduct()">➕ যুক্ত করুন</button>
+
   <ul id="productList"></ul>
 
   <script type="module">
-    import { db, collection, addDoc, deleteDoc, doc, getDocs } from './firebase.js';
+    import { auth, onAuthStateChanged, signOut, db, collection, addDoc, deleteDoc, doc, getDocs } from './firebase.js';
 
     const productsRef = collection(db, "products");
 
-    async function addProduct() {
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = "login.html"; // Redirect if not logged in
+      } else {
+        loadProducts();
+      }
+    });
+
+    window.logout = async function () {
+      await signOut(auth);
+      window.location.href = "login.html";
+    };
+
+    window.addProduct = async function () {
       const name = document.getElementById("name").value;
       const price = document.getElementById("price").value;
       const img = document.getElementById("img").value;
 
       await addDoc(productsRef, { name, price, img });
       loadProducts();
-    }
+    };
 
-    async function deleteProduct(id) {
+    window.deleteProduct = async function (id) {
       await deleteDoc(doc(db, "products", id));
       loadProducts();
-    }
+    };
 
     async function loadProducts() {
       const list = document.getElementById("productList");
@@ -48,9 +62,6 @@
         list.appendChild(li);
       });
     }
-
-    window.deleteProduct = deleteProduct;
-    loadProducts();
   </script>
 </body>
 </html>

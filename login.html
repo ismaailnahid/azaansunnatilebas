@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Login | Azaan Sunnati Lebas</title>
+  <script type="module">
+    // Firebase SDK Import
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+
+    // Firebase Config (আপনার সেটিংস এখানে বসান)
+    const firebaseConfig = {
+      apiKey: "AIzaSyC9oDupW2atBfT_Y2TylOjm3dKhG1PpkJY",
+      authDomain: "azaansunatilebas.firebaseapp.com",
+      projectId: "azaansunatilebas",
+      storageBucket: "azaansunatilebas.firebasestorage.app",
+      messagingSenderId: "854978097747",
+      appId: "1:854978097747:web:3ae3d004d5df2568858ca6",
+      measurementId: "G-WF027GFB8B"
+    };
+
+    // Firebase Initialize
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Admin Email List (যারা admin হবেন)
+    const adminEmails = [
+      "15m433ln4h1d@gmail.com",
+      "admin2@example.com"
+    ];
+
+    // Login ফাংশন
+    window.handleLogin = function (event) {
+      event.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      if (!email || !password) {
+        alert("অনুগ্রহ করে ইমেইল ও পাসওয়ার্ড দিন।");
+        return;
+      }
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+
+          if (adminEmails.includes(user.email)) {
+            // admin হলে admin.html এ রিডাইরেক্ট
+            window.location.href = "admin.html";
+          } else {
+            alert("❌ আপনি Admin নন!");
+            auth.signOut();
+          }
+        })
+        .catch((error) => {
+          alert("Login Error: " + error.message);
+        });
+    };
+  </script>
+</head>
+
+<body style="font-family: Arial, sans-serif; padding: 20px; max-width: 400px; margin: auto;">
+  <h2 style="text-align:center; color:#065f46;">Admin Login</h2>
+
+  <form onsubmit="handleLogin(event)" style="display: flex; flex-direction: column; gap: 15px; margin-top: 30px;">
+    <label for="email">ইমেইল</label>
+    <input id="email" type="email" placeholder="আপনার ইমেইল লিখুন" required style="padding:10px; font-size:1rem;" />
+
+    <label for="password">পাসওয়ার্ড</label>
+    <input id="password" type="password" placeholder="আপনার পাসওয়ার্ড লিখুন" required style="padding:10px; font-size:1rem;" />
+
+    <button type="submit" style="background:#10b981; color:white; border:none; padding:12px; border-radius: 8px; font-weight: bold; cursor: pointer;">
+      লগইন করুন
+    </button>
+  </form>
+</body>
+
+</html>
