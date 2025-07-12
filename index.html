@@ -668,44 +668,82 @@
   <!-- FontAwesome Icon Support -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-  <script>
+ <!-- Firebase SDK যোগ করুন হেডারে বা বডির শেষে -->
+<script type="module">
+  // Import Firebase libraries from CDN
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+  import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
-async function loadCategoriesFromFirebase() {
-  try {
-    const categoriesCol = collection(db, "categories");
-    const categorySnapshot = await getDocs(categoriesCol);
-    const categories = [];
+  // Firebase config (আপনার Firebase Console থেকে কপি করবেন)
+const firebaseConfig = {
+  apiKey: "AIzaSyC9oDupW2atBfT_Y2TylOjm3dKhG1PpkJY",
+  authDomain: "azaansunatilebas.firebaseapp.com",
+  projectId: "azaansunatilebas",
+  storageBucket: "azaansunatilebas.firebasestorage.app",
+  messagingSenderId: "854978097747",
+  appId: "1:854978097747:web:3ae3d004d5df2568858ca6",
+  measurementId: "G-WF027GFB8B"
+};
 
-    for (const catDoc of categorySnapshot.docs) {
-      let categoryData = catDoc.data();
-      categoryData.id = catDoc.id;
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
 
-      const subcategoriesCol = collection(db, `categories/${catDoc.id}/subcategories`);
-      const subcatSnapshot = await getDocs(subcategoriesCol);
-      categoryData.subcategories = [];
+  // আপনার আগের loadCategoriesFromFirebase ফাংশন এখানে যুক্ত করুন:
+  async function loadCategoriesFromFirebase() {
+    try {
+      const categoriesCol = collection(db, "categories");
+      const categorySnapshot = await getDocs(categoriesCol);
+      const categories = [];
 
-      for (const subcatDoc of subcatSnapshot.docs) {
-        let subcatData = subcatDoc.data();
-        subcatData.id = subcatDoc.id;
+      for (const catDoc of categorySnapshot.docs) {
+        let categoryData = catDoc.data();
+        categoryData.id = catDoc.id;
 
-        const productsCol = collection(db, `categories/${catDoc.id}/subcategories/${subcatDoc.id}/products`);
-        const productSnapshot = await getDocs(productsCol);
-        subcatData.products = productSnapshot.docs.map(prodDoc => ({ id: prodDoc.id, ...prodDoc.data() }));
+        const subcategoriesCol = collection(db, `categories/${catDoc.id}/subcategories`);
+        const subcatSnapshot = await getDocs(subcategoriesCol);
+        categoryData.subcategories = [];
 
-        subcatData.productCount = subcatData.products.length;
-        categoryData.subcategories.push(subcatData);
+        for (const subcatDoc of subcatSnapshot.docs) {
+          let subcatData = subcatDoc.data();
+          subcatData.id = subcatDoc.id;
+
+          const productsCol = collection(db, `categories/${catDoc.id}/subcategories/${subcatDoc.id}/products`);
+          const productSnapshot = await getDocs(productsCol);
+          subcatData.products = productSnapshot.docs.map(prodDoc => ({ id: prodDoc.id, ...prodDoc.data() }));
+
+          subcatData.productCount = subcatData.products.length;
+          categoryData.subcategories.push(subcatData);
+        }
+
+        categoryData.productCount = categoryData.subcategories.reduce((sum, sc) => sum + sc.productCount, 0);
+        categories.push(categoryData);
       }
 
-      categoryData.productCount = categoryData.subcategories.reduce((sum, sc) => sum + sc.productCount, 0);
-      categories.push(categoryData);
+      return categories;
+    } catch (error) {
+      console.error("Error loading categories from Firebase:", error);
+      return [];
     }
-
-    return categories;
-  } catch (error) {
-    console.error("Error loading categories from Firebase:", error);
-    return [];
   }
-}
+
+  // আপনার UI কোডের জন্য একটি global ভেরিয়েবল:
+  let categories = [];
+
+  // আপনার মূল ডাটা লোড করার ফাংশন:
+  async function loadCategories() {
+    categories = await loadCategoriesFromFirebase();
+    showMainCategories();
+  }
+
+  // তারপর আপনার UI ফাংশনগুলো (যেমন showMainCategories) এখানে থাকবে বা আগে থেকেই আপনার কোডে আছে।
+
+  // window load হওয়ার পর ডাটা লোড করবেন
+  window.onload = () => {
+    loadCategories();
+  };
+</script>
+
 
 
 
