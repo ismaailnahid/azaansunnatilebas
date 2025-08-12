@@ -612,6 +612,14 @@
           <input type="text" id="prodEditImg" value="${prod.img || ''}">
           <label>মূল্য</label>
           <input type="text" id="prodEditPrice" value="${prod.price || ''}">
+          <label>বর্ণনা (description)</label>
+          <textarea id="prodEditDesc">${prod.description || ''}</textarea>
+          <label>যোগ করার তারিখ (addedDate)</label>
+          <input type="date" id="prodEditDate" value="${prod.addedDate || ''}">
+          <label>জনপ্রিয়তা (popularity)</label>
+          <input type="number" id="prodEditPopularity" value="${prod.popularity || 0}">
+          <label>ছবির লিস্ট (images, কমা দিয়ে আলাদা করুন)</label>
+          <input type="text" id="prodEditImages" value="${(prod.images || []).join(',')}">
           <div class="edit-btn-row">
             <button type="submit">Save</button>
           </div>
@@ -624,6 +632,13 @@
         prod.id = document.getElementById('prodEditId').value.trim();
         prod.img = document.getElementById('prodEditImg').value.trim();
         prod.price = document.getElementById('prodEditPrice').value.trim();
+        prod.description = document.getElementById('prodEditDesc').value.trim();
+        prod.addedDate = document.getElementById('prodEditDate').value;
+        prod.popularity = Number(document.getElementById('prodEditPopularity').value) || 0;
+        prod.images = document.getElementById('prodEditImages').value
+          .split(',')
+          .map(s => s.trim())
+          .filter(s => s);
         updateJsonText();
         fillProductList(prod.id);
         showProdPreview();
@@ -687,16 +702,21 @@
       if (!sub.products) sub.products = [];
       const name = prompt('নতুন প্রোডাক্টের নাম লিখুন:');
       if (!name) return;
-      // একই নামের কয়টা প্রোডাক্ট আছে, তার উপর সিরিয়াল
       const sameNameCount = sub.products.filter(p => p.name && p.name.startsWith(name)).length + 1;
-      const serial = String(sameNameCount).padStart(3, '0'); // তিন ডিজিট
+      const serial = String(sameNameCount).padStart(3, '0');
       const prodName = name + ' ' + serial;
       const prodId = sub.id + '-' + serial;
+      // আজকের তারিখ (YYYY-MM-DD)
+      const today = new Date().toISOString().slice(0, 10);
       const newProd = {
         id: prodId,
         name: prodName,
         img: '',
-        price: ''
+        price: '',
+        description: '',
+        addedDate: today,         // <-- নতুন ফিল্ড
+        popularity: 0,
+        images: []
       };
       sub.products.push(newProd);
       updateJsonText();

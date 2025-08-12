@@ -16,14 +16,21 @@
             "name": "পণ্য 1",
             "img": "logo.jpg",
             "price": "৳3576",
-            "description": "এটি একটি মানসম্মত পণ্য 1।"
+            "description": "এটি একটি মানসম্মত পণ্য 1।",
+               "addedDate": "2025-08-10",
+            "popularity": 15,
+            "images": ["prod1.jpg", "prod1-2.jpg"]
+
           },
           {
             "id": "cat1-sub1-prod2",
             "name": "পণ্য 2",
             "img": "logo.jpg",
             "price": "৳929",
-            "description": "এটি একটি মানসম্মত পণ্য 2।"
+            "description": "এটি একটি মানসম্মত পণ্য 2।",
+                        "addedDate": "2025-08-12",
+            "popularity": 10,
+            "images": ["prod2.jpg"]
           },
           {
             "id": "cat1-sub1-prod3",
